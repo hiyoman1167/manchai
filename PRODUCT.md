@@ -1,0 +1,49 @@
+# Product
+
+<!-- impeccable:product-schema 1 -->
+
+## Platform
+
+web
+
+## Stack
+
+Confirmed: the user delegated the stack choice and wants the easiest way to open the site. The site uses static HTML, CSS, and JavaScript, runs on localhost for review, and is prepared for Cloudflare Workers Static Assets deployment.
+
+## Users
+
+Confirmed: a beginner learning 速成輸入法 who finds ad-heavy sites difficult to use and random character drills too hard.
+
+## Product Purpose
+
+Teach 速成 from roots through first/last code to candidate selection, then let learners type real Chinese sentences, paragraphs, and words with their own installed input method. Practice conceals code answers until the learner asks for help or completes each stage.
+
+## Positioning
+
+The learner first observes a character, requests optional staged hints, types its code, and selects the target among same-code candidates. Sentence and paragraph practice use real Chinese input; the learner selects candidates in their system IME and sees feedback after committed text appears. Vocabulary also offers code study.
+
+## Capabilities and Constraints
+
+- Confirmed: include clear visual breakdowns inspired by the example image and an uncluttered learning interface. The supplied screenshot came from another website, so its branded artwork must not appear in this site's interface.
+- Confirmed: avoid random initial drills and distracting ads.
+- Confirmed: begin with radicals, then practise individual characters.
+- Confirmed later: include actual beginner teaching before drills, informed by online learning material.
+- Current build: 24 basic roots, 191 auxiliary-shape drawings, 1,011 characters in 25 ordered chapters, 410,945 searchable vocabulary and phrase entries, 120 original sentence exercises, 30 original paragraphs, keyboard and auxiliary-shape references, staged hints, native IME typing, simulated code practice, and local progress. Selection controls are custom button groups, not native select menus.
+- Open: account sync and the user's Cloudflare account connection for permanent deployment.
+
+## Brand Commitments
+
+Confirmed: a clean modern Japanese inspired visual style, while the learning content uses Traditional Chinese. The site name is 慢拆.
+
+## Evidence on Hand
+
+- User supplied a screenshot showing coloured first and last components for five characters.
+- Rime's public quick input documentation confirms that 速成 takes the first and last 倉頡 codes.
+
+## Product Principles
+
+1. Teach the rule with a fully worked example, then conceal practice answers.
+2. Reveal the first root, last root, and letters in stages when requested.
+3. In code study, require correct code and candidate choice; in real typing, require the learner to input the actual Chinese text.
+4. Progress from simple to harder examples in a fixed order.
+5. Keep the larger library behind chapter, frequency, and search controls so beginners see one manageable task at a time.

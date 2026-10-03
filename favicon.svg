@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#f7f6f2"/>
+  <rect x="5" y="5" width="54" height="54" fill="none" stroke="#232b29" stroke-width="2"/>
+  <text x="32" y="44" text-anchor="middle" font-size="38" font-family="Songti TC, Noto Serif CJK TC, serif" fill="#232b29">拆</text>
+  <path d="M12 54h19" stroke="#b94660" stroke-width="3"/>
+  <path d="M33 54h19" stroke="#21796f" stroke-width="3"/>
+</svg>

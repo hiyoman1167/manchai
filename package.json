@@ -1,0 +1,14 @@
+{
+  "name": "manchai",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "python3 -m http.server 4173 --bind 127.0.0.1",
+    "build": "python3 tools/build-reading.py && python3 tools/build-runtime-data.py && python3 tools/build-root-guide.py && python3 tools/build-site.py",
+    "test": "python3 tools/build-reading.py && python3 tools/build-runtime-data.py && python3 tools/build-root-guide.py && node tests/site.cjs",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.147.0"
+  }
+}

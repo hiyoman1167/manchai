@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="description" content="用真正速成輸入法，循序練習生活句子、完整段落與完整詞庫。" />
+    <title>句子、段落與詞語練習｜慢拆</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="data/code-data.js" defer></script>
+    <script src="data/reading-data.js" defer></script>
+    <script src="shared.js" defer></script>
+    <script src="typing-core.js" defer></script>
+    <script src="extended.js" defer></script>
+  </head>
+  <body class="practice-page">
+    <a class="skip-link" href="#fluency">跳到主要內容</a>
+    <header class="site-header">
+      <div class="header-inner page-width">
+        <a class="brand" href="index.html" aria-label="慢拆，返回首頁">
+          <span class="brand-mark" aria-hidden="true">拆</span>
+          <span class="brand-name">慢拆<span class="brand-sub">速成輸入法入門</span></span>
+        </a>
+        <nav class="main-nav" aria-label="主要導覽">
+          <a href="learn.html#learn">學習方法</a>
+          <a href="roots.html">字形圖鑑</a>
+          <a href="learn.html#practice">逐字課程</a>
+          <a href="practice.html#fluency" aria-current="page">打字練習</a>
+        </nav>
+        <span class="header-note">先睇清楚，再落手打。</span>
+      </div>
+    </header>
+    <main id="top">
+      <section class="subpage-intro page-width"><span>PRACTICE / 真正打字</span><h1>由一句開始，<em>慢慢打成一篇。</em></h1><p>跟住生活句子同完整段落，用你電腦嘅速成輸入法練選字。想搵個別詞語，亦可以去詞庫練習。</p><div><a href="learn.html#practice">返逐字課程 ↗</a><a href="#fluency">開始打字練習 ↗</a></div></section>
+      <section id="fluency" class="fluency-section page-width" aria-labelledby="fluency-title">
+        <div class="section-heading section-heading-line">
+          <div><h2 id="fluency-title">先打一句，再試一段。</h2><p>由短句入手，再練有情境嘅完整段落。打錯可以即時改；需要時先睇字根提示。</p></div>
+          <span class="section-aside">FLUENCY / 活用</span>
+        </div>
+        <div class="fluency-summary"><strong id="sentence-total">120</strong><span>句生活情境</span><strong id="paragraph-total">30</strong><span>篇完整段落</span><strong id="vocab-total">…</strong><span>個詞語可搜尋</span></div>
+        <div class="fluency-tabs" role="tablist" aria-label="活用練習類型">
+          <button id="sentence-mode" class="active" type="button" role="tab" aria-selected="true" aria-controls="fluency-panel">01　句子</button>
+          <button id="paragraph-mode" type="button" role="tab" aria-selected="false" aria-controls="fluency-panel">02　段落</button>
+          <button id="vocab-mode" type="button" role="tab" aria-selected="false" aria-controls="fluency-panel">03　詞語</button>
+        </div>
+        <div id="fluency-panel" class="fluency-layout" role="tabpanel" aria-labelledby="sentence-mode">
+          <div id="browse-exercises" class="fluency-browser">
+            <div id="vocab-browser" hidden>
+              <label for="vocab-search">搵想練嘅詞語</label>
+              <input id="vocab-search" type="search" placeholder="例如：學習、朋友、天氣" autocomplete="off" />
+              <div class="range-row"><span class="filter-label">或者按次序練</span><div id="vocab-range" class="filter-chips" role="group" aria-label="詞語範圍"><button type="button" data-start="0" aria-pressed="true">香港日常 · 1–100</button><button type="button" data-start="100" aria-pressed="false">常用 · 101–1,000</button><button type="button" data-start="1000" aria-pressed="false">進一步 · 1,001–10,000</button><button type="button" data-start="10000" aria-pressed="false">完整詞庫 · 10,001 以後</button></div></div>
+              <p id="vocab-result-count" class="browser-note" role="status" aria-live="polite"></p><button id="vocab-search-retry" class="vocab-search-retry" type="button" hidden>再試搜尋</button>
+              <div id="vocab-results" class="vocab-results"></div>
+              <div class="browser-pages"><button id="vocab-prev" type="button">← 上一頁</button><span id="vocab-page"></span><button id="vocab-next" type="button">下一頁 →</button></div>
+            </div>
+            <div id="sentence-browser">
+              <span class="filter-label">揀句子主題</span>
+              <div id="sentence-group" class="filter-chips" role="group" aria-label="句子主題"></div>
+              <div id="sentence-results" class="sentence-results"></div>
+            </div>
+            <div id="paragraph-browser" hidden>
+              <span class="filter-label">揀段落長度</span>
+              <div id="paragraph-level" class="filter-chips" role="group" aria-label="段落難度"></div>
+              <p class="browser-note">每篇都有標題同生活情境；由短篇開始，打完再去下一篇。</p>
+              <div id="paragraph-results" class="paragraph-results"></div>
+            </div>
+          </div>
+          <div id="fluency-practice" class="fluency-practice">
+            <div class="fluency-kicker"><span id="fluency-kind">句子練習</span><span id="fluency-rank"></span></div>
+            <h3 id="fluency-heading" class="fluency-heading" hidden></h3>
+            <p id="fluency-prompt" class="fluency-prompt">睇住句子，用你電腦嘅速成輸入法打出嚟。</p>
+            <a class="choose-exercise-link" href="#browse-exercises">揀其他題目 ↓</a>
+            <div id="typing-mode-tabs" class="typing-mode-tabs" role="group" aria-label="練習方式" hidden>
+              <button id="native-mode" class="active" type="button" aria-pressed="true">真正打中文字</button>
+              <button id="code-mode" type="button" aria-pressed="false">拆碼學習</button>
+            </div>
+            <div id="fluency-text" class="fluency-text"></div>
+            <div id="native-exercise" class="native-exercise" hidden>
+              <div class="native-guide"><strong>點樣練？</strong><ol><li>喺電腦切換到「速成」輸入法。</li><li>睇住上面嘅字，打首尾碼，再喺輸入法候選字視窗揀啱字。<a href="learn.html#candidate-demo">睇選字示範 ↗</a></li><li>字入咗文字框先計進度；打錯可以退格改，標點可以唔打。</li></ol></div>
+              <label for="native-input">喺度真正打出中文字</label>
+              <textarea id="native-input" rows="3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="切換到速成輸入法，喺呢度打字…" aria-describedby="native-feedback"></textarea>
+              <div class="native-progress"><span id="native-count">0 / 0 字</span><span id="native-speed">0 字／分鐘</span></div>
+              <p id="native-feedback" class="native-feedback" role="status" aria-live="polite"></p>
+              <div class="native-hint"><button id="native-hint" type="button">提示而家呢個字嘅字根</button><p id="native-hint-text" hidden></p></div>
+              <p class="native-setup">未裝速成？睇 <a href="https://support.apple.com/guide/chinese-input-method/set-up-the-input-source-cim6023ab944/104/mac/27" target="_blank" rel="noopener">Mac 設定</a> 或 <a href="https://learn.microsoft.com/zh-cn/globalization/input/traditional-chinese-ime" target="_blank" rel="noopener">Windows 設定</a>。本練習使用你電腦嘅輸入法，網站唔會代你選字。</p>
+            </div>
+            <div id="fluency-exercise" hidden>
+              <p id="fluency-step" class="fluency-step"></p>
+              <div class="fluency-target"><span>依家打呢個字</span><strong id="fluency-character"></strong><span id="fluency-reveal">首尾字根暫時收起</span></div>
+              <div class="fluency-hint-actions"><button id="fluency-hint" type="button">逐步提示</button><button id="fluency-show" type="button">睇答案</button></div>
+              <form id="fluency-form" class="fluency-form" novalidate><label for="fluency-input">輸入呢個字嘅速成碼</label><div><input id="fluency-input" type="text" inputmode="latin" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="2" placeholder="1–2 個英文字母" /><button id="fluency-check" type="submit">檢查</button></div></form>
+              <p id="fluency-feedback" class="fluency-feedback" role="status" aria-live="polite"></p>
+              <div id="fluency-candidates" class="fluency-candidates" hidden tabindex="-1"><strong>打啱碼，揀返目標字</strong><div id="fluency-candidate-list"></div><p id="fluency-choice-feedback" role="status" aria-live="polite"></p><small>按字卡數字、方向鍵加 Enter，或者點字卡。</small></div>
+              <div id="fluency-review" class="fluency-review" hidden><p id="fluency-review-text"></p><button id="fluency-continue" type="button">下一個字 →</button></div>
+            </div>
+            <div id="fluency-complete" class="fluency-complete" role="status" aria-live="polite" hidden><strong>完成！</strong><span id="fluency-complete-text"></span><div><button id="fluency-repeat" type="button">再練一次</button><button id="fluency-next" type="button">下一題 →</button></div></div>
+          </div>
+          <div id="vocab-loading" class="vocab-loading" role="status" aria-live="polite" hidden><strong id="vocab-loading-title">正在載入詞庫…</strong><p id="vocab-loading-text">先載入需要練嘅詞語；其餘部分用到先下載。</p><button id="vocab-retry" type="button" hidden>再試一次</button></div>
+        </div>
+        <p class="fluency-source">句子同段落由本站編寫；詞庫開頭係本站整理嘅香港日常詞，其餘按 <a href="https://github.com/rime/rime-essay" target="_blank" rel="noopener">Rime 八股文</a>權重排序。字碼採用 <a href="https://www.unicode.org/reports/tr38/" target="_blank" rel="noopener">Unicode Unihan</a>並同 Rime 核對。拆碼模式嘅候選字排序係教學示意；真正打字會使用你電腦嘅輸入法候選字。<a href="licenses/rime-essay-LGPL-3.0.txt">詞庫授權</a> · <a href="licenses/Unicode-LICENSE.txt">字碼資料授權</a></p>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="page-width footer-inner"><span>慢拆</span><span>先學原理，再慢慢練習。</span><a href="#top">返頂部 ↑</a></div></footer>
+  </body>
+</html>

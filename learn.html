@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f6f2" />
+    <meta name="description" content="學速成字根、首尾取碼同候選字選擇，跟住固定次序逐字練習。" />
+    <title>字根與逐字課程｜慢拆</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="data/lesson-data.js" defer></script>
+    <script src="shared.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="learn-page">
+    <a class="skip-link" href="#learn">跳到主要內容</a>
+    <header class="site-header">
+      <div class="header-inner page-width">
+        <a class="brand" href="index.html" aria-label="慢拆，返回首頁">
+          <span class="brand-mark" aria-hidden="true">拆</span>
+          <span class="brand-name">慢拆<span class="brand-sub">速成輸入法入門</span></span>
+        </a>
+        <nav class="main-nav" aria-label="主要導覽">
+          <a href="learn.html#learn" aria-current="page">學習方法</a>
+          <a href="roots.html">字形圖鑑</a>
+          <a href="learn.html#practice">逐字課程</a>
+          <a href="practice.html#fluency">打字練習</a>
+        </nav>
+        <span class="header-note">先睇清楚，再落手打。</span>
+      </div>
+    </header>
+    <main id="top">
+      <section class="subpage-intro page-width"><span>LEARN / 從字根開始</span><h1>一步一步，<em>學識點拆字。</em></h1><p>先睇一次原理，再做有次序嘅練習。字根同逐字課程放喺同一個學習區，方便隨時翻查。</p><div><a href="#learn">先睇教學 ↗</a><a href="#practice">直接練習 ↗</a><a href="#keyboard">字根表 ↗</a></div></section>
+      <section id="learn" class="learn-section page-width" aria-labelledby="learn-title">
+        <div class="section-heading section-heading-line">
+          <div>
+            <h2 id="learn-title">先明白點打，先至練。</h2>
+            <p>跟住三步睇一次，唔使一開始背晒所有字根。</p>
+          </div>
+          <span class="section-aside">LEARN / 入門</span>
+        </div>
+        <div class="learn-layout">
+          <ol class="learn-steps">
+            <li>
+              <span class="learn-number" aria-hidden="true">01</span>
+              <div><h3>先認字根同鍵位</h3><p>速成用倉頡字根，每個字根對應一個英文字母，例如「木」係 D、「口」係 R。有啲彩色部件係字根嘅變形，叫輔助字形，未必同字根一模一樣。</p></div>
+            </li>
+            <li>
+              <span class="learn-number" aria-hidden="true">02</span>
+              <div><h3>只取第一碼同最後一碼</h3><p>通常按字形由上到下、左到右搵拆碼；速成只取完整倉頡碼嘅開頭同結尾，中間唔使打。基本字根獨立成字時只需一碼，例如「木」係 D。</p></div>
+            </li>
+            <li>
+              <span class="learn-number" aria-hidden="true">03</span>
+              <div><h3>打完碼，再選啱嘅字</h3><p>同一組碼會對應多個字。打啱首尾碼後，喺候選列睇清目標字，再按旁邊嘅數字；亦可以用方向鍵移動、Enter 確認。</p></div>
+            </li>
+          </ol>
+          <figure class="learn-example">
+            <div class="learn-example-head"><span>跟住圖，試拆「五」</span><span>EXAMPLE / 五</span></div>
+            <div class="learn-example-image"><div id="learn-diagram"></div></div>
+            <figcaption>
+              <span><b class="first-ink">首碼</b> 一 → M</span>
+              <span><b class="last-ink">尾碼</b> 一 → M</span>
+              <strong>MM</strong>
+            </figcaption>
+          </figure>
+        </div>
+        <div id="candidate-demo" class="candidate-demo" aria-label="候選字選擇示範">
+          <div><h3>打到 MM，點揀「五」？</h3><p>呢個係教學示意：同碼字會一齊出現。目標係「五」，就揀佢旁邊嘅號碼；真正輸入法嘅排序可能唔同。</p></div>
+          <div class="candidate-demo-list"><span><b>1</b> 二</span><span class="target"><b>2</b> 五</span><span><b>3</b> 三</span></div>
+        </div>
+        <div class="learn-end">
+          <p>記住：<strong>字根 → 首尾碼 → 候選字</strong>。識咗個方法，再用下面嘅題目慢慢記熟。</p>
+          <a href="#practice">學識原理，開始練習 <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="learn-sources">教學資料：<a href="https://github.com/rime/rime-quick" target="_blank" rel="noopener">Rime 速成方案</a>、<a href="https://www.hkcards.com/b1/qk-radical0" target="_blank" rel="noopener">HKCards 字根教學</a>、<a href="https://learn.microsoft.com/zh-cn/globalization/input/traditional-chinese-ime" target="_blank" rel="noopener">Microsoft 速成操作</a>。本課例字按 Rime 倉頡五代碼表核對。</p>
+      </section>
+
+      <section id="practice" class="practice-section page-width" aria-labelledby="practice-title">
+        <div class="section-heading">
+          <div>
+            <h2 id="practice-title">開始練習</h2>
+            <p>先觀察、試打碼、再揀候選字；答案需要時先揭開。</p>
+          </div>
+          <div class="progress-wrap" aria-live="polite">
+            <span id="progress-text">0 / 24 字根已完成</span>
+            <div class="progress-track"><span id="progress-fill"></span></div>
+          </div>
+        </div>
+
+        <div class="workspace">
+          <aside class="lesson-rail" aria-label="練習課程">
+            <div class="lesson-switch" role="tablist" aria-label="選擇課程">
+              <button id="roots-tab" class="switch-button active" type="button" role="tab" aria-selected="true" aria-controls="lesson-panel">認字根</button>
+              <button id="words-tab" class="switch-button" type="button" role="tab" aria-selected="false" aria-controls="lesson-panel">逐字課程</button>
+            </div>
+            <div class="lesson-intro">
+              <span id="lesson-number" class="lesson-count">第 1 組 · 01 / 06</span>
+              <h3 id="lesson-title">先記住字根</h3>
+              <p id="lesson-description">一次只學一小組；認得頭幾個就可以開始拆字。</p>
+            </div>
+            <div class="chapter-picker"><span class="filter-label">揀一課</span><button id="chapter-toggle" class="chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter-options"><span id="chapter-current">01 · 字根入門</span><span aria-hidden="true">⌄</span></button><div id="chapter-options" class="chapter-options" role="group" aria-label="課程列表" hidden></div></div>
+            <div id="lesson-list" class="lesson-list" aria-label="題目列表"></div>
+            <div class="rail-tip"><span class="tip-label">提示</span><p>題目旁邊唔再放答案；卡住先按<strong>逐步提示</strong>。</p></div>
+          </aside>
+
+          <div id="lesson-panel" class="study-panel" role="tabpanel" aria-labelledby="roots-tab">
+            <div class="study-topline"><span id="study-type">字根練習</span><span id="item-position">01 / 24</span></div>
+            <div class="study-content">
+              <div class="visual-area">
+                <div id="root-visual" class="root-visual"><span id="root-character">一</span><span class="visual-corner">字根</span></div>
+                <div id="word-visual" class="word-visual" hidden>
+                  <div id="study-diagram"></div>
+                  <span class="visual-caption">首尾答案會跟住提示逐步顯示</span>
+                </div>
+              </div>
+              <div class="study-details">
+                <p id="study-overline" class="study-overline">先觀察，答案暫時收起</p>
+                <h3 id="study-character" class="study-character">一</h3>
+                <p id="study-hint" class="study-hint">睇清楚字形，諗吓佢對應鍵盤邊個字母。</p>
+                <div id="code-breakdown" class="code-breakdown" aria-label="字根鍵位">
+                  <div class="code-part first"><span class="part-label">字根</span><strong id="first-root">一</strong><kbd id="first-code">?</kbd></div>
+                  <div id="last-part" class="code-part last" hidden><span class="part-label">尾碼</span><strong id="last-root">?</strong><kbd id="last-code">?</kbd></div>
+                </div>
+                <div class="hint-actions"><button id="hint-button" type="button">逐步提示</button><button id="reveal-button" type="button">睇答案</button></div>
+                <form id="answer-form" class="answer-form" novalidate>
+                  <label id="answer-label" for="answer-input">試吓打出對應英文字母</label>
+                  <div class="answer-row">
+                    <input id="answer-input" name="answer" type="text" inputmode="latin" enterkeyhint="done" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="2" placeholder="喺呢度輸入" aria-describedby="answer-feedback" />
+                    <button id="check-button" type="submit">檢查答案 <span aria-hidden="true">↗</span></button>
+                  </div>
+                  <p id="answer-feedback" class="answer-feedback" role="status" aria-live="polite">答案已收起。可以先試，唔識再睇提示。</p>
+                </form>
+                <div id="candidate-panel" class="candidate-panel" hidden tabindex="-1">
+                  <h4>碼打啱，再揀返目標字</h4>
+                  <p>目標係 <strong id="candidate-target"></strong>。按字卡旁邊嘅數字、用方向鍵再按 Enter，或者直接點字卡。</p>
+                  <div id="candidate-list" class="candidate-list"></div>
+                  <p id="candidate-feedback" class="candidate-feedback" role="status" aria-live="polite">先睇清楚，唔使急住揀。</p>
+                  <small>候選字同碼；排序只作練習示意，實際輸入法可能不同。</small>
+                </div>
+                <div id="review-panel" class="review-panel" hidden><strong>點樣拆到呢個碼？</strong><p id="review-explanation"></p></div>
+                <div class="study-actions"><button id="previous-button" type="button" class="text-button">← 上一題</button><button id="next-button" type="button" class="text-button">下一題 →</button></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="keyboard" class="keyboard-section page-width" aria-labelledby="keyboard-title">
+        <div class="section-heading section-heading-line">
+          <div><h2 id="keyboard-title">字根鍵位表</h2><p>忘記咗就望一望。唔使一日背晒。</p></div>
+          <span class="section-aside">KEY GUIDE / 字根</span>
+        </div>
+        <div id="keyboard-grid" class="keyboard-grid" aria-label="倉頡字根與英文字母對照表"></div>
+        <p class="keyboard-note">呢度係 24 個基本字根；每個鍵嘅輔助字形同例字，已經整齊放喺完整圖鑑。「難」鍵 X 係進階特別鍵。</p>
+        <a class="root-atlas-link" href="roots.html">睇齊 24 鍵、191 幅輔助字形同例字 <span aria-hidden="true">↗</span></a>
+        <div class="aux-guide">
+          <div class="aux-intro"><h3>形狀唔一樣，點揀字根？</h3><p>以下六個係入門示範。想睇其餘所有字形，可以開上面嘅完整圖鑑，逐個鍵對照例字。</p></div>
+          <div class="aux-examples" aria-label="六個輔助字形例子">
+            <div><strong>亻</strong><span>人 <kbd>O</kbd></span></div>
+            <div><strong>氵</strong><span>水 <kbd>E</kbd></span></div>
+            <div><strong>灬</strong><span>火 <kbd>F</kbd></span></div>
+            <div><strong>冂</strong><span>月 <kbd>B</kbd></span></div>
+            <div><strong>士</strong><span>土 <kbd>G</kbd></span></div>
+            <div><strong>亠</strong><span>卜 <kbd>Y</kbd></span></div>
+          </div>
+          <div class="aux-worked"><span>試睇「仙」</span><p><b>亻</b> 係「人」嘅輔助字形，先取 <kbd>O</kbd>；右邊「山」取 <kbd>U</kbd>，所以打 <strong>OU</strong>。見到形狀變咗，先搵佢屬於邊個基本字根。</p></div>
+        </div>
+      </section>
+
+      <section id="reference" class="reference-section page-width" aria-labelledby="reference-title">
+        <div class="reference-copy"><h2 id="reference-title">由入門，練到日常用字。</h2><p>先完成 5 組拆字入門，再按生活主題逐組練。每課都有固定次序；字碼要自己試，唔會喺目錄先揭開。</p><span id="reference-count">載入課程中</span></div>
+        <div id="diagram-grid" class="diagram-grid" aria-label="按難度分組的拆碼課程"></div>
+      </section>
+
+    </main>
+
+    <footer class="site-footer"><div class="page-width footer-inner"><span>慢拆</span><span>先學原理，再慢慢練習。</span><a href="#top">返頂部 ↑</a></div></footer>
+  </body>
+</html>
