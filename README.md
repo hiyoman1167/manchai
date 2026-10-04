@@ -35,6 +35,10 @@
 
 Cloudflare 官方說明：純靜態資產請求免費且不限量；如果日後加入真正 Worker 程式，免費方案有額外用量限制。詳見 [Static Assets 收費說明](https://developers.cloudflare.com/workers/static-assets/billing-and-limitations/) 同 [Workers 定價](https://developers.cloudflare.com/workers/platform/pricing/)。
 
+## Google Search Console
+
+用網址前置字元資源 `https://learn.manchai.workers.dev/` 管理本站。`index.html` 內嘅 Google 驗證標記要保留；`robots.txt` 會指向 `sitemap.xml`。Sitemap 收錄首頁、學習、字根圖鑑同練習四個正式網址；各頁 canonical 亦指向相同網址。修改網站網址時，記得一併更新呢幾處。
+
 ## 內容來源
 
 - 拆碼圖解由本站以文字及版面重新繪製，沒有轉載參考網站的圖片。

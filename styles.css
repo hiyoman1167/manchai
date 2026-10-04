@@ -555,7 +555,7 @@ h1{font-size:53px;margin-bottom:12px}
 }
 
 .home-page .intro{min-height:410px}
-.pathways{padding:28px 0 100px}
+.pathways{padding:28px 0 62px}
 .pathway-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .pathway-card{position:relative;display:flex;flex-direction:column;min-height:230px;padding:27px 29px;border:1px solid var(--line);background:var(--white);transition:border-color .2s,transform .2s,box-shadow .2s}
 .pathway-card:hover{border-color:var(--jade);transform:translateY(-3px);box-shadow:var(--shadow)}
@@ -563,6 +563,26 @@ h1{font-size:53px;margin-bottom:12px}
 .pathway-card strong{max-width:12ch;margin:19px 0 11px;font-family:"Yu Mincho","Songti TC",serif;font-size:25px;font-weight:600;line-height:1.4}
 .pathway-card p{max-width:32ch;margin:0;color:var(--soft-ink);font-size:12px;line-height:1.8}
 .pathway-card b{position:absolute;right:26px;top:24px;color:var(--jade);font-size:17px;font-weight:400}
+.home-primer{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(38px,5vw,90px);border-top:1px solid var(--line);padding:54px 0 104px}
+.home-primer-copy h2{max-width:14ch;font-size:clamp(30px,3.3vw,46px);line-height:1.35;letter-spacing:-.025em;margin-bottom:24px}
+.home-primer-copy p{max-width:62ch;color:var(--soft-ink);font-size:14px;line-height:1.9;margin-bottom:13px}
+.home-primer-copy p strong{color:var(--ink);letter-spacing:.08em}
+.home-primer-copy>a{display:inline-flex;align-items:center;gap:12px;margin-top:10px;padding-bottom:6px;border-bottom:1px solid var(--ink);font-size:13px;font-weight:700}
+.home-primer-copy>a:hover,.home-primer-questions a:hover{color:var(--jade);border-color:var(--jade)}
+.home-primer-code{display:flex;align-items:center;gap:32px;min-height:175px;border-bottom:1px solid var(--line)}
+.home-primer-character{flex:none;width:118px;text-align:center;font-family:"Yu Mincho","Hiragino Mincho ProN","Songti TC",serif;font-size:112px;line-height:1;color:var(--ink)}
+.home-primer-code>div{display:grid;gap:15px;flex:1}
+.home-primer-code>div span{display:flex;align-items:center;gap:13px;font-family:"Yu Mincho","Hiragino Mincho ProN","Songti TC",serif;font-size:24px;line-height:1.2}
+.home-primer-code b{font-family:"Hiragino Sans","PingFang TC","Noto Sans TC",sans-serif;font-size:11px;letter-spacing:.1em}
+.home-primer-code span:first-child b,.home-primer-code span:first-child kbd{color:var(--rose)}
+.home-primer-code span:last-child b,.home-primer-code span:last-child kbd{color:var(--jade)}
+.home-primer-code kbd{margin-left:auto;font-family:inherit;font-size:20px;font-weight:700}
+.home-primer-questions h3{margin:23px 0 10px;font-size:14px}
+.home-primer-questions dl{margin:0}
+.home-primer-questions dl>div{padding:13px 0;border-top:1px solid var(--line)}
+.home-primer-questions dt{font-size:13px;font-weight:700}
+.home-primer-questions dd{margin:5px 0 0;color:var(--soft-ink);font-size:12px;line-height:1.85}
+.home-primer-questions a{border-bottom:1px solid var(--line-strong);font-weight:700;color:var(--ink)}
 .subpage-intro{padding:45px 0 39px;border-bottom:1px solid var(--line)}
 .subpage-intro h1{max-width:13ch;margin:12px 0 8px;font-size:clamp(38px,4vw,56px)}
 .subpage-intro p{max-width:58ch;margin:0;color:var(--soft-ink);font-size:14px;line-height:1.85}
@@ -576,7 +596,7 @@ h1{font-size:53px;margin-bottom:12px}
 .not-found a{margin-top:14px;border-bottom:1px solid var(--jade);color:var(--jade);font-size:13px;font-weight:700}
 .learn-page .learn-section{padding-top:44px}
 .practice-page .fluency-section{padding-top:45px}
-@media(max-width:850px){.pathway-grid{grid-template-columns:1fr 1fr}.pathway-card{min-height:205px}}
+@media(max-width:850px){.pathway-grid{grid-template-columns:1fr 1fr}.pathway-card{min-height:205px}.home-primer{gap:30px}.home-primer-character{width:85px;font-size:88px}}
 @media(max-width:600px){
   .header-inner{min-height:auto;display:grid;grid-template-columns:1fr;gap:11px;padding:12px 0}
   .brand{width:max-content}
@@ -584,11 +604,15 @@ h1{font-size:53px;margin-bottom:12px}
   .main-nav a,.main-nav a:first-child{display:block;border:1px solid var(--line);padding:7px 5px;text-align:center;font-size:11px;white-space:nowrap}
   .main-nav a[aria-current="page"]{border-color:var(--jade);background:var(--jade-soft)}
   .home-page .intro{min-height:auto}
-  .pathways{padding:18px 0 60px}
+  .pathways{padding:18px 0 42px}
   .pathway-grid{grid-template-columns:1fr}
   .pathway-card{min-height:170px;padding:20px 22px}
   .pathway-card strong{max-width:none;margin:12px 0 7px;font-size:22px}
   .pathway-card b{right:22px;top:19px}
+  .home-primer{grid-template-columns:1fr;gap:25px;padding:38px 0 70px}
+  .home-primer-copy h2{font-size:34px;margin-bottom:16px}
+  .home-primer-code{gap:18px;min-height:138px}
+  .home-primer-character{width:90px;font-size:88px}
   .subpage-intro{padding:30px 0}
   .subpage-intro h1{font-size:38px}
   .practice-page .fluency-section{padding-top:30px}

@@ -6,7 +6,7 @@ import shutil
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 FILES = (
-    "index.html", "learn.html", "roots.html", "practice.html", "404.html",
+    "index.html", "learn.html", "roots.html", "practice.html", "404.html", "robots.txt", "sitemap.xml",
     "styles.css", "favicon.svg", "shared.js", "script.js", "roots.js", "typing-core.js", "extended.js",
     "data/lesson-data.js", "data/root-guide-data.js", "data/code-data.js", "data/reading-data.js",
 )
