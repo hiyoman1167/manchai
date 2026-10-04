@@ -1,0 +1,41 @@
+key,zh-HK
+title,而家到「{character}」
+intro,唔識拆？由字形開始，一步一步搵出點打。
+open,一齊拆呢個字
+next,下一步提示
+done,四步提示已開
+close,收起提示
+stepsLabel,拆字提示步驟
+firstStep,1 睇首碼
+lastStep,2 睇尾碼
+keysStep,3 搵鍵位
+chooseStep,4 練選字
+firstTitle,先搵開頭嘅字根
+lastTitle,再搵最後嘅字根
+keysTitle,將字根換成英文字母
+chooseTitle,打完碼，仲要揀啱字
+first,「{character}」嘅紅色筆畫對應首碼「{first}」。輔助字形可能唔似完整字根；先對照形狀，暫時唔使背英文字母。
+firstPlain,「{character}」嘅首碼係「{first}」。此部分暫時未有可靠筆畫上色，可以開字形圖鑑對照佢嘅輔助字形。
+last,綠色筆畫對應尾碼「{last}」，紅色係首碼「{first}」。尾碼係最後取碼嘅部件，唔一定係最後一筆；淡灰色嘅中間碼唔使打。
+lastPlain,首碼係「{first}」，尾碼係「{last}」。未標色嘅部分請對照字形圖鑑；速成只打首尾碼。
+single,「{character}」本身係單碼字根「{first}」，只需按一次鍵，唔使重複打首尾。
+keys,切換到速成輸入法，喺下方文字框先按 {firstKey}，再按 {lastKey}。速成碼係 {quick}；完整倉頡碼 {full} 嘅中間碼唔使打。
+singleKeys,切換到速成輸入法，喺下方文字框按一次 {firstKey}。呢個字只需一碼 {quick}。
+variants,呢個字亦有速成碼 {variants}；可用邊組碼，視乎你安裝嘅輸入法。
+specialKey,X 係「難」特別鍵，用於部分特殊字形；唔好當成普通字根去估形狀。
+choose,輸入碼 {quick} 後，電腦會顯示候選字。搵到「{character}」先揀佢旁邊嘅號碼；唔喺第一頁就按候選視窗嘅下一頁。字入咗下方文字框先計完成。
+candidateNote,點下面嘅字卡試揀一次：呢度係同碼教學示意，排序同你電腦可能唔同。
+candidateLabel,候選 {number}：{character}
+candidateCorrect,揀啱！而家去文字框，用速成輸入法真正打出「{character}」。
+candidateWrong,呢個係「{chosen}」，目標係「{character}」。睇清字形再揀一次。
+firstRoot,首碼
+lastRoot,尾碼
+unknown,「{character}」暫時冇可核對嘅拆碼資料，請喺輸入法候選字搵目標字。
+atlas,唔認得形狀？睇字形圖鑑
+keyboardLabel,速成字根鍵盤位置，紅色係首碼鍵，綠色係尾碼鍵
+diagramLabel,「{character}」嘅拆字提示，第 {stage} 步
+guidedLabel,自動帶練
+guidedDescription,每個新字，由首碼開始提示。
+guidedOff,關
+guidedOn,開
+try,去文字框試打

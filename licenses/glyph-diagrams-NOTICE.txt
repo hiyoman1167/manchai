@@ -1,0 +1,22 @@
+Chinese stroke drawings and component metadata
+
+Source: https://github.com/skishore/makemeahanzi
+Revision: bddc96d41bef78427ed0e034e9f7e31d71fd1b92
+Author: Shaunak Kishore and contributors.
+
+graphics.txt is derived from Arphic PL KaitiM GB and Arphic PL UKai.
+Copyright (C) 1999 Arphic Technology Co., Ltd.
+Redistributed stroke paths are subject to the Arphic Public License,
+included as Arphic-Public-License.txt.
+
+dictionary.txt is derived from Unihan and CJKlib. Component metadata
+is available under LGPL-3.0-or-later; see makemeahanzi-LGPL-3.0.txt.
+
+Local modifications: retained the lesson characters' SVG paths, reduced
+metadata to characters/decomposition/matches, and grouped paths into
+first-code, last-code and remaining strokes. Source data, component
+rules and generator are available in this site's source repository:
+https://github.com/hiyoman1167/manchai
+
+The highlights are teaching annotations. Characters whose endpoint
+mapping is unavailable retain uncoloured strokes and a visible note.

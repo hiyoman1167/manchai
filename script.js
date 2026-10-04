@@ -91,6 +91,12 @@ try {
   if (Array.isArray(saved)) completed = new Set(saved.filter(value => typeof value === "string"));
 } catch (_) { completed = new Set(); }
 let lesson = "roots", index = 0, hintLevel = 0, codeAccepted = false, solvedThisVisit = false;
+const lessonPositionKey = "manchai-lesson-position-v1";
+const savedLessonPosition = window.MANCHAI_STORAGE.read(lessonPositionKey, null);
+if (savedLessonPosition && ["roots", "words"].includes(savedLessonPosition.lesson)) {
+  const savedIndex = (savedLessonPosition.lesson === "roots" ? roots : words).findIndex(item => item.character === savedLessonPosition.character);
+  if (savedIndex >= 0) { lesson = savedLessonPosition.lesson; index = savedIndex; }
+}
 let candidateChoices = [], candidateFocus = 0, candidateMisses = new Set();
 const dataFor = () => lesson === "roots" ? roots : words;
 const itemKey = (type, item) => `${type}:${item.character}`;
@@ -110,17 +116,29 @@ function diagramMarkup(item, position, level = 0) {
   const label = level >= 3 ? `首碼 ${first} ${firstCode}，尾碼 ${last} ${lastCode}`
     : level === 2 ? `首碼字根 ${first}，尾碼字根 ${last}；鍵位待探索`
     : level === 1 ? `首碼字根 ${first}；尾碼待探索` : "首尾拆碼待探索";
-  return `<div class="glyph-diagram" role="img" aria-label="${item.character}：${label}">
+  const matched = window.MANCHAI_GLYPH.info(item.character, item.full);
+  const glyph = window.MANCHAI_GLYPH.markup(item.character, item.full);
+  return `<div class="glyph-diagram" data-hint-level="${level}" role="img" aria-label="${item.character}：${label}">
     <div class="diagram-topline"><span>首尾圖解</span><span>${pad(position + 1)} / ${pad(words.length)}</span></div>
     <div class="diagram-body">
       <span class="diagram-annotation first"><small>首碼</small><strong>${first}</strong><b>${firstCode}</b></span>
-      <span class="diagram-glyph" aria-hidden="true">${item.character}</span>
+      <span class="diagram-glyph${matched ? " has-strokes" : ""}" aria-hidden="true">${glyph}</span>
       <span class="diagram-annotation last"><small>尾碼</small><strong>${last}</strong><b>${lastCode}</b></span>
     </div><div class="diagram-bars" aria-hidden="true"><span></span><span></span></div>
   </div>`;
 }
+function diagramCaption(item, level) {
+  const copy = window.MANCHAI_DIAGRAMS?.copy;
+  if (!copy) return "首尾答案會跟住提示逐步顯示";
+  if (!level) return copy.hidden;
+  const drawing = window.MANCHAI_DIAGRAMS.glyphs[item.character];
+  if (!drawing || drawing[0] !== item.full || !drawing[1] && !drawing[2]) return copy.unavailable;
+  if (drawing[3]) return copy.single;
+  if (!drawing[1] || level >= 2 && !drawing[2]) return copy.partial;
+  return level >= 2 ? copy.both : copy.first;
+}
 function saveProgress() {
-  try { localStorage.setItem(storageKey, JSON.stringify([...completed])); } catch (_) { /* Storage may be unavailable. */ }
+  completed = new Set(window.MANCHAI_STORAGE.mergeCompleted(storageKey, completed));
 }
 function renderProgress() {
   const items = dataFor();
@@ -172,6 +190,8 @@ function renderHints() {
   const item = currentItem(), isRoot = lesson === "roots";
   const level = codeAccepted ? 3 : hintLevel;
   $("#study-diagram").innerHTML = isRoot ? "" : diagramMarkup(item, index, level);
+  $("#root-visual").setAttribute("data-hint-level", level);
+  $("#study-diagram").parentElement?.querySelector(".visual-caption")?.replaceChildren(document.createTextNode(diagramCaption(item, level)));
   $("#first-root").textContent = isRoot ? item.character : level >= 1 ? item.first : "？";
   $("#first-code").textContent = level >= (isRoot ? 1 : 3) ? item.code[0] : "?";
   $("#last-root").textContent = !isRoot && level >= 2 ? item.last : "？";
@@ -242,6 +262,7 @@ function render() {
   renderHints();
   renderList();
   renderProgress();
+  window.MANCHAI_STORAGE.write(lessonPositionKey, {lesson, character:item.character});
 }
 function explanation(item) {
   if (lesson === "roots") return `「${item.character}」係基本字根，對應 ${item.code} 鍵。見到佢做字根或者相關輔助字形，可以由呢個鍵開始諗。`;
@@ -367,6 +388,7 @@ keyboard.forEach(([code, character]) => {
   keyboardGrid.append(key);
 });
 $("#learn-diagram").innerHTML = diagramMarkup(words.find(item => item.character === "五"), 2, 3);
+$("#diagram-credit").textContent = window.MANCHAI_DIAGRAMS?.copy.credit || "";
 const gallery = $("#diagram-grid");
 function updateGalleryStatus() {
   [...gallery.children].forEach((button, group) => {

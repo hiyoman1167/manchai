@@ -8,10 +8,13 @@
     <title>字根與逐字課程｜慢拆</title>
     <link rel="canonical" href="https://learn.manchai.workers.dev/learn" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261004-progress" />
     <script src="data/lesson-data.js" defer></script>
-    <script src="shared.js" defer></script>
-    <script src="script.js" defer></script>
+    <script src="data/progress-copy.js" defer></script>
+    <script src="shared.js?v=20261004-progress" defer></script>
+    <script src="data/diagram-data.js" defer></script>
+    <script src="glyph-diagrams.js" defer></script>
+    <script src="script.js?v=20261004-progress" defer></script>
   </head>
   <body class="learn-page">
     <a class="skip-link" href="#learn">跳到主要內容</a>
@@ -73,7 +76,7 @@
           <p>記住：<strong>字根 → 首尾碼 → 候選字</strong>。識咗個方法，再用下面嘅題目慢慢記熟。</p>
           <a href="#practice">學識原理，開始練習 <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="learn-sources">教學資料：<a href="https://github.com/rime/rime-quick" target="_blank" rel="noopener">Rime 速成方案</a>、<a href="https://www.hkcards.com/b1/qk-radical0" target="_blank" rel="noopener">HKCards 字根教學</a>、<a href="https://learn.microsoft.com/zh-cn/globalization/input/traditional-chinese-ime" target="_blank" rel="noopener">Microsoft 速成操作</a>。本課例字按 Rime 倉頡五代碼表核對。</p>
+        <p class="learn-sources">教學資料：<a href="https://github.com/rime/rime-quick" target="_blank" rel="noopener">Rime 速成方案</a>、<a href="https://www.hkcards.com/b1/qk-radical0" target="_blank" rel="noopener">HKCards 字根教學</a>、<a href="https://learn.microsoft.com/zh-cn/globalization/input/traditional-chinese-ime" target="_blank" rel="noopener">Microsoft 速成操作</a>。本課例字按 Rime 倉頡五代碼表核對。<a id="diagram-credit" href="licenses/glyph-diagrams-NOTICE.txt"></a></p>
       </section>
 
       <section id="practice" class="practice-section page-width" aria-labelledby="practice-title">
@@ -87,7 +90,7 @@
             <div class="progress-track"><span id="progress-fill"></span></div>
           </div>
         </div>
-
+        <p class="local-progress"><span id="local-progress-status" role="status"></span></p>
         <div class="workspace">
           <aside class="lesson-rail" aria-label="練習課程">
             <div class="lesson-switch" role="tablist" aria-label="選擇課程">

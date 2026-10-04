@@ -37,6 +37,157 @@ let nativeComparison = MANCHAI_TYPING.compare("", "");
 let nativeFirstAt = 0;
 let nativeHintStage = 0;
 let nativeGeneration = 0;
+let nativeGuided = false;
+const practicePositionKey = "manchai-practice-position-v1";
+const storedPracticePosition = window.MANCHAI_STORAGE.read(practicePositionKey, null);
+let pendingPracticeResume = storedPracticePosition && typeof storedPracticePosition === "object" && !Array.isArray(storedPracticePosition) ? storedPracticePosition : null;
+const validExerciseId = (id, length) => Number.isInteger(id) && id >= 0 && id < length;
+if (pendingPracticeResume) {
+  const saved = pendingPracticeResume;
+  if (validExerciseId(saved.lastSentenceId, readingData.sentences.length)) lastSentenceId = saved.lastSentenceId;
+  if (validExerciseId(saved.lastParagraphId, readingData.paragraphs.length)) lastParagraphId = saved.lastParagraphId;
+  if (validExerciseId(saved.lastVocabId, learningData.wordCount)) lastVocabId = saved.lastVocabId;
+  if ([0, 100, 1000, 10000].includes(saved.range)) selectedVocabStart = saved.range;
+  nativeGuided = saved.guided === true;
+  practiceMode = saved.practiceMode === "code" ? "code" : "native";
+}
+const tutorCopy = window.MANCHAI_PRACTICE_COPY;
+const tutorText = (key, values = {}) => tutorCopy[key].replace(/\{(\w+)\}/g, (_, name) => values[name] ?? "");
+
+function renderNativeTutor() {
+  const character = nativeComparison.target[nativeComparison.correct];
+  const variants = character ? (learningData.codes[character] ? [learningData.codes[character]] : readingData.codeHints[character]) : null;
+  const full = variants?.[0];
+  const code = full ? quickCode(full) : "";
+  const values = {character, full, quick:code, first:rootByCode[code[0]], last:rootByCode[code.at(-1)], firstKey:code[0], lastKey:code.at(-1), stage:nativeHintStage};
+  const drawing = full ? window.MANCHAI_GLYPH.info(character, full) : null;
+  const body = el("native-tutor-body");
+  body.hidden = !character || nativeHintStage === 0;
+  el("native-tutor-title").textContent = character ? tutorText("title", values) : "";
+  el("native-tutor-intro").textContent = tutorCopy.intro;
+  el("native-hint").textContent = tutorCopy[nativeHintStage === 0 ? "open" : nativeHintStage < 4 ? "next" : "done"];
+  el("native-hint").disabled = !character || nativeHintStage >= 4;
+  el("native-hint").setAttribute("aria-expanded", String(!body.hidden));
+  el("native-close").textContent = tutorCopy.close;
+  el("native-close").hidden = body.hidden;
+  el("native-guided-label").textContent = tutorCopy.guidedLabel;
+  el("native-guided-description").textContent = tutorCopy.guidedDescription;
+  el("native-guided-state").textContent = tutorCopy[nativeGuided ? "guidedOn" : "guidedOff"];
+  el("native-guided").setAttribute("aria-checked", String(nativeGuided));
+  el("native-try").textContent = tutorCopy.try;
+  el("practice-diagram-credit").textContent = window.MANCHAI_DIAGRAMS.copy.credit;
+  el("native-hint-text").hidden = body.hidden;
+  if (body.hidden) {
+    el("native-hint-text").textContent = "";
+    el("native-tutor-diagram").innerHTML = "";
+    return;
+  }
+
+  const stepKeys = ["firstStep", "lastStep", "keysStep", "chooseStep"];
+  const steps = el("native-tutor-steps");
+  steps.setAttribute("aria-label", tutorCopy.stepsLabel);
+  steps.replaceChildren();
+  stepKeys.forEach((key, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = tutorCopy[key];
+    button.className = nativeHintStage === index + 1 ? "active" : "";
+    button.setAttribute("aria-pressed", String(nativeHintStage === index + 1));
+    button.disabled = !full;
+    button.addEventListener("click", () => {
+      nativeHintStage = index + 1;
+      renderNativeTutor();
+      el("native-tutor-steps").children[index].focus();
+    });
+    steps.append(button);
+  });
+  el("native-tutor-step-title").textContent = tutorCopy[["firstTitle", "lastTitle", "keysTitle", "chooseTitle"][nativeHintStage - 1]];
+  let message = !full ? tutorText("unknown", values)
+    : nativeHintStage === 1 ? tutorText(full.length === 1 ? "single" : drawing?.[1] ? "first" : "firstPlain", values)
+    : nativeHintStage === 2 ? tutorText(full.length === 1 ? "single" : drawing?.[1] && drawing?.[2] ? "last" : "lastPlain", values)
+    : nativeHintStage === 3 ? tutorText(full.length === 1 ? "singleKeys" : "keys", values)
+    : tutorText("choose", values);
+  const alternateCodes = variants ? [...new Set(variants.map(quickCode))].filter(value => value !== code) : [];
+  if (nativeHintStage >= 3 && alternateCodes.length) message += " " + tutorText("variants", {variants:alternateCodes.join("／")});
+  if (nativeHintStage >= 2 && code.includes("X")) message += " " + tutorCopy.specialKey;
+  el("native-hint-text").textContent = message;
+  const diagram = el("native-tutor-diagram");
+  diagram.setAttribute("data-hint-level", Math.min(3, nativeHintStage));
+  diagram.setAttribute("aria-label", tutorText("diagramLabel", values));
+  diagram.innerHTML = "";
+  const glyph = document.createElement("span");
+  glyph.className = `diagram-glyph${drawing ? " has-strokes" : ""}`;
+  glyph.setAttribute("aria-hidden", "true");
+  glyph.innerHTML = window.MANCHAI_GLYPH.markup(character, full);
+  diagram.replaceChildren(glyph);
+  const roots = document.createElement("div");
+  roots.className = "tutor-root-pair";
+  const rootCodes = full?.length === 1 ? [code[0]] : [code[0], code.at(-1)];
+  rootCodes.forEach((key, index) => {
+    const part = document.createElement("span");
+    const label = document.createElement("small");
+    label.textContent = tutorCopy[index ? "lastRoot" : "firstRoot"];
+    const root = document.createElement("strong");
+    root.textContent = index && nativeHintStage < 2 ? "？" : rootByCode[key] || "？";
+    part.append(label, root); roots.append(part);
+  });
+  diagram.append(roots);
+  const link = el("native-root-link");
+  link.textContent = tutorCopy.atlas;
+  const linkedKey = nativeHintStage === 2 ? code.at(-1) : code[0];
+  link.href = linkedKey && linkedKey !== "X" ? `roots.html#root-${linkedKey}` : "roots.html";
+
+  const keys = el("native-tutor-keys");
+  keys.hidden = !full || nativeHintStage < 3;
+  keys.replaceChildren();
+  rootCodes.forEach((key, index) => {
+    const pair = document.createElement("span");
+    const root = document.createElement("span");
+    root.textContent = rootByCode[key] || "？";
+    const kbd = document.createElement("kbd"); kbd.textContent = key;
+    pair.append(root, kbd); keys.append(pair);
+  });
+  const keyboard = el("native-tutor-keyboard");
+  keyboard.hidden = !full || nativeHintStage !== 3;
+  keyboard.setAttribute("aria-label", tutorCopy.keyboardLabel);
+  keyboard.replaceChildren();
+  if (!keyboard.hidden) ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"].forEach(row => {
+    const line = document.createElement("div");
+    [...row].forEach(key => {
+      const node = document.createElement("span");
+      node.className = `tutor-key${code[0] === key ? " is-first" : ""}${code.length > 1 && code.at(-1) === key ? " is-last" : ""}`;
+      const letter = document.createElement("b"); letter.textContent = key;
+      const root = document.createElement("small"); root.textContent = rootByCode[key] || "—";
+      node.append(letter, root); line.append(node);
+    }); keyboard.append(line);
+  });
+
+  const candidates = el("native-tutor-candidates");
+  candidates.hidden = !full || nativeHintStage !== 4;
+  el("native-tutor-candidate-note").textContent = tutorCopy.candidateNote;
+  el("native-tutor-candidate-feedback").textContent = "";
+  const list = el("native-tutor-candidate-list");
+  list.replaceChildren();
+  if (!candidates.hidden) {
+    const options = [...(learningData.candidates?.[code] || "")].filter(value => value !== character).slice(0, 2);
+    options.splice(Math.min(1, options.length), 0, character);
+    options.forEach((choice, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.setAttribute("aria-label", tutorText("candidateLabel", {number:index + 1, character:choice}));
+      const number = document.createElement("span"); number.textContent = index + 1;
+      const word = document.createElement("strong"); word.textContent = choice;
+      button.append(number, word);
+      button.addEventListener("click", () => {
+        const correct = choice === character;
+        const feedback = el("native-tutor-candidate-feedback");
+        feedback.textContent = tutorText(correct ? "candidateCorrect" : "candidateWrong", {character, chosen:choice});
+        feedback.className = correct ? "success" : "error";
+        button.classList.add(correct ? "correct" : "missed");
+      }); list.append(button);
+    });
+  }
+}
 
 const quickCode = full => full.length === 1 ? full : full[0] + full.at(-1);
 const currentChar = () => activeCharacters[characterIndex];
@@ -45,7 +196,24 @@ const currentQuick = () => quickCode(currentFull());
 const itemIdentity = (mode = fluencyMode, id = activeId) => `${{vocab:"v",sentence:"s",paragraph:"p"}[mode]}${mode === "vocab" && practiceMode === "code" ? "" : "n"}:${id}`;
 
 function saveFluentProgress() {
-  try { localStorage.setItem(fluencyStorageKey, JSON.stringify([...fluentDone])); } catch (_) { /* Storage may be unavailable. */ }
+  fluentDone = new Set(window.MANCHAI_STORAGE.mergeCompleted(fluencyStorageKey, fluentDone));
+  renderStoredCompletionCount();
+}
+function renderStoredCompletionCount() {
+  const count = (prefix, length) => [...fluentDone].filter(value => {
+    const match = value.match(new RegExp(`^${prefix}:(\\d+)$`));
+    return match && validExerciseId(Number(match[1]), length);
+  }).length.toLocaleString("en-US");
+  const values = {sentences:count("sn", readingData.sentences.length), paragraphs:count("pn", readingData.paragraphs.length), words:count("vn", learningData.wordCount), codes:count("v", learningData.wordCount)};
+  el("saved-completions").textContent = window.MANCHAI_PROGRESS_COPY.summary.replace(/\{(\w+)\}/g, (_, key) => values[key]);
+}
+function savePracticePosition() {
+  window.MANCHAI_STORAGE.write(practicePositionKey, {
+    mode:fluencyMode, id:activeId, text:activeText, practiceMode,
+    lastSentenceId, lastParagraphId, lastVocabId, range:selectedVocabStart,
+    guided:nativeGuided, cursor:characterIndex,
+    typed:practiceMode === "native" ? nativeComparison.target.slice(0, nativeComparison.correct).join("") : ""
+  });
 }
 function fluencyFeedback(message, kind = "") {
   const node = el("fluency-feedback");
@@ -119,6 +287,7 @@ function renderCharacter() {
   fluencyFeedback("先觀察字形，自己試打。卡住可以逐步睇提示。");
   renderReveal();
   renderActiveText();
+  savePracticePosition();
 }
 function startExercise(mode, id) {
   fluencyMode = mode;
@@ -148,6 +317,7 @@ function startExercise(mode, id) {
     ? `常用次序 ${(id + 1).toLocaleString("en-US")} / ${learningData.wordCount.toLocaleString("en-US")}`
     : mode === "sentence" ? `句子 ${id + 1} / ${readingData.sentences.length}` : `${lesson.level} · 段落 ${id + 1} / ${readingData.paragraphs.length}`;
   el("fluency-heading").hidden = mode !== "paragraph";
+  if (fluentDone.has(itemIdentity())) el("fluency-rank").textContent += ` · ${window.MANCHAI_PROGRESS_COPY.review}`;
   el("fluency-heading").textContent = mode === "paragraph" ? lesson.title : "";
   el("fluency-text").classList.toggle("long-text", mode === "paragraph");
   el("native-input").rows = mode === "paragraph" ? 6 : 3;
@@ -157,8 +327,20 @@ function startExercise(mode, id) {
   el("fluency-exercise").hidden = practiceMode !== "code";
   el("native-exercise").hidden = practiceMode !== "native";
   el("fluency-complete").hidden = true;
-  if (practiceMode === "native") resetNativeExercise();
-  else renderCharacter();
+  const resume = pendingPracticeResume;
+  pendingPracticeResume = null;
+  const matches = resume?.mode === mode && resume.id === id && resume.text === activeText && resume.practiceMode === practiceMode;
+  if (practiceMode === "native") {
+    resetNativeExercise();
+    if (matches && typeof resume.typed === "string" && !MANCHAI_TYPING.compare(resume.typed, activeText).hasError) {
+      el("native-input").value = resume.typed;
+      updateNativeExercise();
+    }
+  } else {
+    if (matches && validExerciseId(resume.cursor, activeCharacters.length)) characterIndex = resume.cursor;
+    renderCharacter();
+  }
+  savePracticePosition();
 }
 function buildChoices(character, position) {
   const code = quickCode(learningData.codes[character]);
@@ -233,7 +415,7 @@ function resetNativeExercise() {
   nativeGeneration++;
   nativeComparison = MANCHAI_TYPING.compare("", activeText);
   nativeFirstAt = 0;
-  nativeHintStage = 0;
+  nativeHintStage = nativeGuided ? 1 : 0;
   el("native-input").value = "";
   el("native-input").disabled = false;
   el("native-input").setAttribute("aria-invalid", "false");
@@ -241,9 +423,7 @@ function resetNativeExercise() {
   el("native-speed").textContent = "0 字／分鐘";
   el("native-feedback").textContent = "先試自己打。選字後，中文字會出現喺下面文字框。";
   el("native-feedback").className = "native-feedback";
-  el("native-hint-text").hidden = true;
-  el("native-hint-text").textContent = "";
-  el("native-hint").textContent = "提示而家呢個字嘅字根";
+  renderNativeTutor();
   renderActiveText();
 }
 
@@ -253,9 +433,8 @@ function updateNativeExercise() {
   nativeComparison = MANCHAI_TYPING.compare(el("native-input").value, activeText);
   if (!nativeFirstAt && nativeComparison.typed.length) nativeFirstAt = Date.now();
   if (nativeComparison.correct !== previousCorrect) {
-    nativeHintStage = 0;
-    el("native-hint-text").hidden = true;
-    el("native-hint").textContent = "提示而家呢個字嘅字根";
+    nativeHintStage = nativeGuided ? 1 : 0;
+    renderNativeTutor();
   }
   el("native-count").textContent = `${nativeComparison.correct} / ${nativeComparison.target.length} 字`;
   const elapsedMinutes = nativeFirstAt ? Math.max((Date.now() - nativeFirstAt) / 60000, 1 / 60) : 0;
@@ -275,6 +454,7 @@ function updateNativeExercise() {
   }
   renderActiveText();
   if (nativeComparison.complete) completeExercise();
+  savePracticePosition();
 }
 
 let nativeComposing = false;
@@ -299,28 +479,20 @@ el("native-input").addEventListener("paste", event => {
 });
 el("native-input").addEventListener("drop", event => event.preventDefault());
 el("native-hint").addEventListener("click", () => {
-  const character = nativeComparison.target[nativeComparison.correct];
-  if (!character) return;
-  const full = learningData.codes[character];
-  const variants = full ? [full] : readingData.codeHints[character];
-  const hint = el("native-hint-text");
-  if (!variants) {
-    hint.textContent = `「${character}」暫時冇拆碼資料，請用輸入法試吓揀字。`;
-  } else {
-    nativeHintStage = Math.min(3, nativeHintStage + 1);
-    const quicks = [...new Set(variants.map(quickCode))];
-    const firstRoots = [...new Set(quicks.map(code => `${rootByCode[code[0]]} ${code[0]}`))].join("／");
-    const lastRoots = [...new Set(quicks.map(code => `${rootByCode[code.at(-1)]} ${code.at(-1)}`))].join("／");
-    hint.textContent = nativeHintStage === 1
-      ? `「${character}」先睇開頭：首碼字根係 ${firstRoots}。`
-      : nativeHintStage === 2
-        ? `「${character}」首碼 ${firstRoots}，尾碼 ${lastRoots}。`
-        : full ? codeExplanation(character)
-          : `Rime 倉頡五代收錄完整碼 ${variants.join("／")}；速成取首尾碼 ${quicks.join("／")}。實際候選字視乎你用嘅輸入法。`;
-    el("native-hint").textContent = nativeHintStage < 3 ? "再睇一個提示" : "已顯示速成碼";
-  }
-  hint.hidden = false;
-  el("native-input").focus();
+  if (!nativeComparison.target[nativeComparison.correct]) return;
+  nativeHintStage = Math.min(4, nativeHintStage + 1);
+  renderNativeTutor();
+});
+el("native-guided").addEventListener("click", () => {
+  nativeGuided = !nativeGuided;
+  renderNativeTutor();
+  savePracticePosition();
+});
+el("native-try").addEventListener("click", () => el("native-input").focus());
+el("native-close").addEventListener("click", () => {
+  nativeHintStage = 0;
+  renderNativeTutor();
+  el("native-hint").focus();
 });
 el("native-mode").addEventListener("click", () => switchPracticeMode("native"));
 el("code-mode").addEventListener("click", () => switchPracticeMode("code"));
@@ -660,4 +832,5 @@ renderSentenceGroups();
 renderParagraphLevels();
 renderSentenceResults();
 renderParagraphResults();
-startExercise("sentence", 0);
+renderStoredCompletionCount();
+switchFluencyMode(["sentence", "paragraph", "vocab"].includes(pendingPracticeResume?.mode) ? pendingPracticeResume.mode : "sentence");

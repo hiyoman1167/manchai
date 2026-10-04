@@ -31,6 +31,7 @@ write("lesson-data.js", "MANCHAI_DATA", {
 })
 write("code-data.js", "MANCHAI_DATA", {
     "codes": corpus["codes"],
+    "candidates": corpus["candidates"],
     "wordCount": len(corpus["words"]),
     "vocabChunkSize": CHUNK_SIZE,
 })

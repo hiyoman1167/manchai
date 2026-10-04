@@ -8,12 +8,16 @@
     <title>句子、段落與詞語練習｜慢拆</title>
     <link rel="canonical" href="https://learn.manchai.workers.dev/practice" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=20261004-progress" />
     <script src="data/code-data.js" defer></script>
     <script src="data/reading-data.js" defer></script>
-    <script src="shared.js" defer></script>
+    <script src="data/progress-copy.js" defer></script>
+    <script src="shared.js?v=20261004-progress" defer></script>
     <script src="typing-core.js" defer></script>
-    <script src="extended.js" defer></script>
+    <script src="data/diagram-data.js" defer></script>
+    <script src="data/practice-copy.js" defer></script>
+    <script src="glyph-diagrams.js" defer></script>
+    <script src="extended.js?v=20261004-progress" defer></script>
   </head>
   <body class="practice-page">
     <a class="skip-link" href="#fluency">跳到主要內容</a>
@@ -40,6 +44,7 @@
           <span class="section-aside">FLUENCY / 活用</span>
         </div>
         <div class="fluency-summary"><strong id="sentence-total">120</strong><span>句生活情境</span><strong id="paragraph-total">30</strong><span>篇完整段落</span><strong id="vocab-total">…</strong><span>個詞語可搜尋</span></div>
+        <p class="local-progress"><span id="local-progress-status" role="status"></span><span id="saved-completions"></span></p>
         <div class="fluency-tabs" role="tablist" aria-label="活用練習類型">
           <button id="sentence-mode" class="active" type="button" role="tab" aria-selected="true" aria-controls="fluency-panel">01　句子</button>
           <button id="paragraph-mode" type="button" role="tab" aria-selected="false" aria-controls="fluency-panel">02　段落</button>
@@ -79,11 +84,24 @@
             <div id="fluency-text" class="fluency-text"></div>
             <div id="native-exercise" class="native-exercise" hidden>
               <div class="native-guide"><strong>點樣練？</strong><ol><li>喺電腦切換到「速成」輸入法。</li><li>睇住上面嘅字，打首尾碼，再喺輸入法候選字視窗揀啱字。<a href="learn.html#candidate-demo">睇選字示範 ↗</a></li><li>字入咗文字框先計進度；打錯可以退格改，標點可以唔打。</li></ol></div>
+              <section class="typing-tutor" aria-labelledby="native-tutor-title">
+                <div class="tutor-heading"><div><h4 id="native-tutor-title"></h4><p id="native-tutor-intro"></p></div><div class="tutor-heading-actions"><button id="native-close" type="button" hidden></button><button id="native-hint" type="button" aria-expanded="false" aria-controls="native-tutor-body"></button></div></div>
+                <div id="native-tutor-body" hidden>
+                  <div id="native-tutor-steps" class="tutor-steps" role="group"></div>
+                  <div class="tutor-lesson">
+                    <div id="native-tutor-diagram" class="tutor-diagram" role="img"></div>
+                    <div class="tutor-instruction"><h5 id="native-tutor-step-title"></h5><p id="native-hint-text" aria-live="polite"></p><div id="native-tutor-keys" class="tutor-key-pair" hidden></div><a id="native-root-link" href="roots.html"></a></div>
+                  </div>
+                  <div id="native-tutor-keyboard" class="tutor-keyboard" hidden></div>
+                  <div id="native-tutor-candidates" class="tutor-candidates" hidden><p id="native-tutor-candidate-note"></p><div id="native-tutor-candidate-list" class="tutor-candidate-list"></div><p id="native-tutor-candidate-feedback" role="status" aria-live="polite"></p></div>
+                  <div class="tutor-footer"><div class="tutor-guidance"><div class="tutor-guidance-copy"><span id="native-guided-label"></span><small id="native-guided-description"></small></div><button id="native-guided" class="tutor-switch" type="button" role="switch" aria-checked="false" aria-labelledby="native-guided-label" aria-describedby="native-guided-description"><span class="tutor-switch-track" aria-hidden="true"><span></span></span><span id="native-guided-state" aria-hidden="true"></span></button></div><button id="native-try" type="button"></button></div>
+                  <a id="practice-diagram-credit" class="tutor-credit" href="licenses/glyph-diagrams-NOTICE.txt"></a>
+                </div>
+              </section>
               <label for="native-input">喺度真正打出中文字</label>
               <textarea id="native-input" rows="3" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="切換到速成輸入法，喺呢度打字…" aria-describedby="native-feedback"></textarea>
               <div class="native-progress"><span id="native-count">0 / 0 字</span><span id="native-speed">0 字／分鐘</span></div>
               <p id="native-feedback" class="native-feedback" role="status" aria-live="polite"></p>
-              <div class="native-hint"><button id="native-hint" type="button">提示而家呢個字嘅字根</button><p id="native-hint-text" hidden></p></div>
               <p class="native-setup">未裝速成？睇 <a href="https://support.apple.com/guide/chinese-input-method/set-up-the-input-source-cim6023ab944/104/mac/27" target="_blank" rel="noopener">Mac 設定</a> 或 <a href="https://learn.microsoft.com/zh-cn/globalization/input/traditional-chinese-ime" target="_blank" rel="noopener">Windows 設定</a>。本練習使用你電腦嘅輸入法，網站唔會代你選字。</p>
             </div>
             <div id="fluency-exercise" hidden>

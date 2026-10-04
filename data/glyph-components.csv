@@ -1,0 +1,358 @@
+component,side,key,strokes,count
+⺀,first,Y,all,0
+⺀,last,Y,all,0
+⺈,first,N,all,0
+⺈,last,N,all,0
+⺌,first,F,all,0
+⺌,last,F,all,0
+⺮,first,H,all,0
+⺮,last,H,all,0
+⺼,first,B,all,0
+⺼,last,B,all,0
+一,first,M,all,0
+一,last,M,all,0
+业,first,T,all,0
+业,last,T,all,0
+丨,first,L,all,0
+丨,last,L,all,0
+丩,first,V,all,0
+丩,last,V,all,0
+中,first,L,all,0
+中,last,L,all,0
+丶,first,I,all,0
+丶,last,I,all,0
+丷,first,C,all,0
+丷,last,C,all,0
+丿,first,H,all,0
+丿,last,H,all,0
+乇,first,P,all,0
+乇,last,P,all,0
+乚,first,U,all,0
+乚,last,U,all,0
+乛,first,N,all,0
+乛,last,N,all,0
+亅,first,L,all,0
+亅,last,L,all,0
+人,first,O,all,0
+人,last,O,all,0
+亻,first,O,all,0
+亻,last,O,all,0
+八,first,C,all,0
+八,last,C,all,0
+冂,first,B,all,0
+冂,last,B,all,0
+冖,first,B,all,0
+冖,last,B,all,0
+凵,first,U,all,0
+凵,last,U,all,0
+匕,first,P,all,0
+匕,last,P,all,0
+匸,first,S,all,0
+匸,last,S,all,0
+十,first,J,all,0
+十,last,J,all,0
+卄,first,T,all,0
+卄,last,T,all,0
+卜,first,Y,all,0
+卜,last,Y,all,0
+厶,first,I,all,0
+厶,last,I,all,0
+口,first,R,all,0
+口,last,R,all,0
+囗,first,W,all,0
+囗,last,W,all,0
+土,first,G,all,0
+土,last,G,all,0
+士,first,G,all,0
+士,last,G,all,0
+大,first,K,all,0
+大,last,K,all,0
+女,first,V,all,0
+女,last,V,all,0
+宀,first,J,all,0
+宀,last,J,all,0
+尸,first,S,all,0
+尸,last,S,all,0
+山,first,U,all,0
+山,last,U,all,0
+廴,first,N,all,0
+廴,last,N,all,0
+廿,first,T,all,0
+廿,last,T,all,0
+弓,first,N,all,0
+弓,last,N,all,0
+彐,first,S,all,0
+彐,last,S,all,0
+心,first,P,all,0
+心,last,P,all,0
+忄,first,P,all,0
+忄,last,P,all,0
+戈,first,I,all,0
+戈,last,I,all,0
+手,first,Q,all,0
+手,last,Q,all,0
+扌,first,Q,all,0
+扌,last,Q,all,0
+日,first,A,all,0
+日,last,A,all,0
+曰,first,A,all,0
+曰,last,A,all,0
+月,first,B,all,0
+月,last,B,all,0
+木,first,D,all,0
+木,last,D,all,0
+水,first,E,all,0
+水,last,E,all,0
+氵,first,E,all,0
+氵,last,E,all,0
+火,first,F,all,0
+火,last,F,all,0
+灬,first,F,all,0
+灬,last,F,all,0
+爫,first,B,all,0
+爫,last,B,all,0
+犭,first,K,all,0
+犭,last,K,all,0
+田,first,W,all,0
+田,last,W,all,0
+疒,first,K,all,0
+疒,last,K,all,0
+竹,first,H,all,0
+竹,last,H,all,0
+耂,first,J,all,0
+耂,last,J,all,0
+艹,first,T,all,0
+艹,last,T,all,0
+衤,first,L,all,0
+衤,last,L,all,0
+覀,first,M,all,0
+覀,last,M,all,0
+辶,first,Y,all,0
+辶,last,Y,all,0
+金,first,C,all,0
+金,last,C,all,0
+釒,first,C,all,0
+釒,last,C,all,0
+龶,first,Q,all,0
+龶,last,Q,all,0
+丁,first,M,0,2
+丁,last,N,1,2
+七,first,J,0,2
+七,last,U,1,2
+三,first,M,0,3
+三,last,M,2,3
+上,first,Y,0 1,3
+上,last,M,2,3
+下,first,M,0,3
+下,last,Y,1 2,3
+乂,first,K,0 1,2
+乂,last,K,0 1,2
+乍,first,H,0,5
+乍,last,S,1 2 3 4,5
+乙,first,N,0,1
+乙,last,U,0,1
+九,first,K,0,2
+九,last,N,1,2
+也,first,P,0 1,3
+也,last,D,2,3
+了,first,N,0,2
+了,last,N,1,2
+二,first,M,0,2
+二,last,M,1,2
+于,first,M,0,3
+于,last,D,1 2,3
+五,first,M,0,4
+五,last,M,3,4
+亠,first,Y,0 1,2
+亠,last,Y,0 1,2
+亥,first,Y,0 1,6
+亥,last,O,4 5,6
+今,first,O,0 1,4
+今,last,N,3,4
+儿,first,H,0,2
+儿,last,U,1,2
+入,first,O,0,2
+入,last,H,1,2
+全,first,O,0 1,6
+全,last,G,3 4 5,6
+八,first,H,0,2
+八,last,O,1,2
+冫,first,I,0,2
+冫,last,M,1,2
+刀,first,S,0,2
+刀,last,H,1,2
+刂,first,L,0,2
+刂,last,N,1,2
+力,first,K,1,2
+力,last,S,0,2
+半,first,F,0 1,5
+半,last,Q,2 3 4,5
+厂,first,M,0,2
+厂,last,H,1,2
+又,first,E,0 1,2
+又,last,E,0 1,2
+右,first,K,0 1,5
+右,last,R,2 3 4,5
+四,first,W,0 1 4,5
+四,last,C,2 3,5
+士,first,J,0 1,3
+士,last,M,2,3
+夂,first,H,0,3
+夂,last,E,1 2,3
+夊,first,H,0,3
+夊,last,E,1 2,3
+夕,first,N,0 1,3
+夕,last,I,2,3
+夬,first,D,0 1,4
+夬,last,K,2 3,4
+子,first,N,0,3
+子,last,D,1 2,3
+學,first,H,0 1 2,16
+學,last,D,14 15,16
+寸,first,D,0 1,3
+寸,last,I,2,3
+小,first,N,0,3
+小,last,F,0 1 2,3
+川,first,L,0,3
+川,last,L,2,3
+工,first,M,0,3
+工,last,M,2,3
+己,first,S,0 1,3
+己,last,U,2,3
+已,first,S,0 1,3
+已,last,U,2,3
+巳,first,R,0 1,3
+巳,last,U,2,3
+巴,first,A,0 1 2,4
+巴,last,U,3,4
+巾,first,L,0,3
+巾,last,B,1 2,3
+干,first,M,0,3
+干,last,J,1 2,3
+幺,first,V,0 1,3
+幺,last,I,2,3
+广,first,I,0,3
+广,last,H,1 2,3
+彳,first,H,0,3
+彳,last,O,1 2,3
+戊,first,I,2 3 4,5
+戊,last,H,1,5
+我,first,H,0,7
+我,last,I,1 4 5 6,7
+手,first,H,0,4
+手,last,Q,1 2 3,4
+文,first,Y,0 1,4
+文,last,K,2 3,4
+斤,first,H,0,4
+斤,last,L,1 2 3,4
+方,first,Y,0 1,4
+方,last,S,2,4
+東,first,D,0 5 6 7,8
+東,last,W,1 2 3 4,8
+止,first,Y,0 1,4
+止,last,M,3,4
+母,first,W,0 1 4,5
+母,last,I,2 3,5
+氏,first,H,0,4
+氏,last,P,1 2 3,4
+氐,first,H,0,5
+氐,last,M,4,5
+父,first,C,0 1,4
+父,last,K,2 3,4
+爿,first,V,1 2 3,4
+爿,last,M,0,4
+牛,first,H,0,4
+牛,last,Q,1 2 3,4
+王,first,M,0,4
+王,last,G,1 2 3,4
+由,first,L,0,5
+由,last,W,1 2 3 4,5
+疋,first,N,0,5
+疋,last,O,2 3 4,5
+白,first,H,0,5
+白,last,A,1 2 3 4,5
+皿,first,B,0 1,5
+皿,last,T,2 3 4,5
+目,first,B,0 1,5
+目,last,U,2 3 4,5
+看,first,H,0,9
+看,last,U,6 7 8,9
+矢,first,O,0 1,5
+矢,last,K,3 4,5
+石,first,M,0 1,5
+石,last,R,2 3 4,5
+礻,first,I,0,4
+礻,last,F,1 2 3,4
+禾,first,H,0,5
+禾,last,D,1 2 3 4,5
+立,first,Y,0 1,5
+立,last,T,2 3 4,5
+米,first,F,0 1,6
+米,last,D,2 3 4 5,6
+糸,first,V,0 1,6
+糸,last,F,3 4 5,6
+糹,first,V,0 1 2,6
+糹,last,F,3 4 5,6
+羊,first,T,0 1 2,6
+羊,last,Q,3 4 5,6
+而,first,M,0,6
+而,last,L,5,6
+耳,first,S,0 1 2,6
+耳,last,J,3 4 5,6
+聿,first,L,0,6
+聿,last,Q,1 2 3 4 5,6
+腦,first,B,0 1 2 3,13
+腦,last,W,7 8 9 10 11 12,13
+臣,first,S,0 5,6
+臣,last,L,1 2 3 4,6
+臼,first,H,0 1 2,6
+臼,last,U,3 4 5,6
+舟,first,H,0,6
+舟,last,N,1,6
+艮,first,A,0 1 2,6
+艮,last,V,3 4 5,6
+虫,first,L,0 1 2 3,6
+虫,last,I,4 5,6
+衣,first,Y,0 1,6
+衣,last,V,2 3 4 5,6
+言,first,Y,0 1,7
+言,last,R,4 5 6,7
+豆,first,M,0,7
+豆,last,T,4 5 6,7
+豕,first,M,0,7
+豕,last,O,5 6,7
+豸,first,B,0 1 2 3,7
+豸,last,H,4 5 6,7
+貓,first,B,0 1 2 3,16
+貓,last,W,11 12 13 14 15,16
+足,first,R,0 1 2,7
+足,last,O,4 5 6,7
+車,first,J,0,7
+車,last,J,5 6,7
+酉,first,M,0,7
+酉,last,W,1 2 3 4 5 6,7
+長,first,S,0 1 2 3,8
+長,last,V,4 5 6 7,8
+門,first,A,0 1 2 3,8
+門,last,N,4 5 6 7,8
+阝,first,N,0,2
+阝,last,L,1,2
+隹,first,O,0 1,8
+隹,last,G,2 3 4 5 6 7,8
+雨,first,M,0,8
+雨,last,Y,4 5 6 7,8
+非,first,L,0,8
+非,last,Y,4 5 6 7,8
+頁,first,M,0,9
+頁,last,C,7 8,9
+飠,first,O,0 1,8
+飠,last,I,2,8
+馬,first,S,0 1 2 3 4 5,10
+馬,last,F,6 7 8 9,10
+黑,first,W,0 1 2 3 4 5,12
+黑,last,F,8 9 10 11,12
+龜,first,N,0 1,18
+龜,last,U,17,18
+出,first,U,0 1 2,5
+小,first,F,all,3
+小,last,C,1 2,3

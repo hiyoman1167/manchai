@@ -1,0 +1,8 @@
+key,zh-HK
+hidden,先自己拆；按「逐步提示」睇彩色部件。
+first,紅色係首碼部件；再按提示睇尾碼。
+both,紅色係首碼部件 · 綠色係尾碼部件
+partial,已標色嘅係對應部件；未標色部分請對照兩側字根。
+single,呢個字只取一碼；紅色係整個字根。
+unavailable,此字未有筆畫上色；請對照兩側字根。
+credit,字形：Arphic／Make Me a Hanzi

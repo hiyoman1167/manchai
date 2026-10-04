@@ -4,7 +4,7 @@
 
 ## 開啟網站
 
-直接用瀏覽器開啟 `index.html`，或者喺專案目錄執行 `npm run dev`，再去 `http://127.0.0.1:4173/`。網站內容唔使後端；完成進度會儲喺同一個瀏覽器嘅本機儲存空間。
+直接用瀏覽器開啟 `index.html`，或者喺專案目錄執行 `npm run dev`，再去 `http://127.0.0.1:4173/`。網站內容唔使後端；字根、拆字、句子、段落同詞語嘅完成紀錄，以及上次練習位置、已打啱嘅部分同「自動帶練」設定，都會自動存入 localStorage。重新開啟同一網站可以繼續；只適用同一瀏覽器及網址，唔會跨裝置同步，清除網站資料會移除紀錄。儲存失敗會顯示提示，但仍可以練習。
 
 網站分成四頁：`index.html` 係首頁路線圖、`learn.html` 係原理同逐字課程、`roots.html` 係 24 鍵輔助字形圖鑑、`practice.html` 係句子、段落同詞語練習。
 
@@ -18,7 +18,7 @@
 4. 題目同字卡預設唔顯示答案。可以逐步睇首字根、尾字根、英文字母，或者主動揭答案；答啱碼之後仲要喺同碼候選字入面揀返目標字，先會計完成。
 5. 候選列支援點擊、數字 1–3、方向鍵加 Enter。本站排序只係教學模擬，實際輸入法可能唔同。
 6. 句子分九個生活主題；段落分起步、進一步同完整篇章三級。詞語先由本站整理嘅 99 個香港日常詞開始，再按詞庫常用次序瀏覽，亦可搜尋。
-7. 句子同段落用「真正打中文字」：先喺系統設定加入速成輸入法，切換去速成，再喺網站文字框輸入。選字由你電腦嘅輸入法處理；網站只會喺中文字真正入咗文字框之後核對。組字期間唔會判錯，打錯可退格修改。標點可略過，貼上文字唔計練習。卡住可以逐步睇字根提示。
+7. 句子同段落用「真正打中文字」：先喺系統設定加入速成輸入法，切換去速成，再喺網站文字框輸入。選字由你電腦嘅輸入法處理；網站只會喺中文字真正入咗文字框之後核對。組字期間唔會判錯，打錯可退格修改。標點可略過，貼上文字唔計練習。卡住可以按「一齊拆呢個字」，逐步睇彩色首碼、尾碼、鍵盤位置同同碼候選字示範；亦可開「自動帶練」開關。示範選字唔計真正打字進度；完成或退格換字會更新提示，未主動開帶練時會收起答案。
 8. 詞語可以轉去「拆碼學習」。呢個模式嘅候選字卡係教學模擬，並非你電腦輸入法嘅真實排序。
 
 網站無法讀取你目前啟用邊種輸入法；想練速成，請先自行切換到速成。Mac 同 Windows 嘅官方設定教學已連喺練習頁。
@@ -41,7 +41,7 @@ Cloudflare 官方說明：純靜態資產請求免費且不限量；如果日後
 
 ## 內容來源
 
-- 拆碼圖解由本站以文字及版面重新繪製，沒有轉載參考網站的圖片。
+- 拆碼圖解使用本機逐筆 SVG：提示首碼時標紅，再提示尾碼時標綠，其他筆畫轉淡墨。課程同閱讀練習共有 1,146 個字有筆畫圖；847 個可以標出全部首尾部件，274 個只標出一端，未可靠對應嘅部分會保留原色並提示。字形來自 [Make Me a Hanzi](https://github.com/skishore/makemeahanzi) 指定版本，筆畫依 Arphic Public License、部件資料依 LGPL-3.0-or-later 使用；來源、修改及授權見 [字形聲明](licenses/glyph-diagrams-NOTICE.txt)。沒有轉載參考網站的圖片。
 - 字形圖鑑嘅 191 幅圖來自 [Wikimedia Commons 倉頡字形圖](https://commons.wikimedia.org/wiki/Category:Cangjie_input_method)，逐檔核對為 CC0 後以本機縮圖提供；分組同例字參考[倉頡輔助字形列表](https://zh.wikibooks.org/zh-hant/%E5%80%89%E9%A0%A1%E8%BC%B8%E5%85%A5%E6%B3%95/%E8%BC%94%E5%8A%A9%E5%AD%97%E5%BD%A2)，例字完整碼按本站資料核對。用戶提供嘅參考截圖冇放入網站。
 - 速成取碼原則：參考 [Rime 速成輸入方案](https://github.com/rime/rime-quick)，取倉頡碼首尾二碼。
 - 入門教學次序、字根及輔助字形、單碼字、候選字說明：參考 [HKCards 學速成](https://www.hkcards.com/b1/qk-menu) 同其[字根教學](https://www.hkcards.com/b1/qk-radical0)。網站文字已重新撰寫。
@@ -51,6 +51,10 @@ Cloudflare 官方說明：純靜態資產請求免費且不限量；如果日後
 - 實際輸入法嘅候選字操作參考 [Microsoft 繁體中文輸入法說明](https://learn.microsoft.com/zh-cn/globalization/input/traditional-chinese-ime)。
 
 ## 更新練習資料
+
+`data/glyph-components.csv` 記錄可對應首尾碼嘅筆畫，`data/diagram-copy.csv` 係彩色提示文字來源；修改後執行 `python3 tools/build-glyph-diagrams.py`，產生 `data/diagram-data.js` 同 `assets/glyphs/`。保留 `data/glyph-source/` 嘅原始部件及筆畫資料，可離線重建；瀏覽器只下載當前題目需要嘅圖檔。彩色筆畫需由本機網站伺服器或正式網站載入。
+
+`data/practice-copy.csv` 係四步新手提示嘅翻譯來源，`data/progress-copy.csv` 係本機進度提示嘅翻譯來源；執行 `python3 tools/build-practice-copy.py` 產生相應 JS 檔案。新增課程或閱讀用字後，可向 `tools/import-glyph-source.py` 提供聲明內指定版本嘅 `dictionary.txt` 同 `graphics.txt`，保留新增字嘅原始筆畫資料，再執行 `npm run build`；未有圖檔嘅字仍可用文字字根提示。`glyph-diagrams.js` 供教學同打字提示共用。
 
 `data/root-guide.csv` 係 191 幅字形與例字對照，`tools/build-root-guide.py` 會檢查例字碼同圖檔，再產生輕量嘅 `data/root-guide-data.js`。`assets/root-shapes/` 收錄已核對 CC0 嘅本機縮圖；網站開啟時毋須連 Wikimedia Commons。
 
