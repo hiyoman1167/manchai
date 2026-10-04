@@ -705,3 +705,5 @@ h1{font-size:53px;margin-bottom:12px}
   .subpage-intro h1{font-size:38px}
   .practice-page .fluency-section{padding-top:30px}
 }
+:root .nav-beta{font-family:inherit;font-size:9px;letter-spacing:.02em;color:var(--jade);border:1px solid var(--line-strong);border-radius:3px;padding:1px 4px;margin-left:3px}
+@media(max-width:700px){.main-nav{overflow-x:auto;justify-content:flex-start;white-space:nowrap}.main-nav a{flex-shrink:0}}

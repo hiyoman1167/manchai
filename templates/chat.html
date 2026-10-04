@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f6f2" />
+  <meta name="description" content="{{page.description}}" />
+  <title>{{page.title}}</title>
+  <link rel="canonical" href="https://learn.manchai.workers.dev/chat" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="styles.css?v=20261004-chat" />
+  <link rel="stylesheet" href="chat.css?v=20261004-chat" />
+  <script src="data/chat-data.js?v=20261004-chat" defer></script>
+  <script src="data/code-data.js" defer></script>
+  <script src="shared.js?v=20261004-progress" defer></script>
+  <script src="chat.js?v=20261004-chat" defer></script>
+</head>
+<body class="chat-page">
+  <a class="skip-link" href="#chat-room">{{nav.chat}}</a>
+  <header class="site-header"><div class="header-inner page-width">
+    <a class="brand" href="index.html" aria-label="慢拆"><span class="brand-mark" aria-hidden="true">拆</span><span class="brand-name">慢拆<span class="brand-sub">速成輸入法入門</span></span></a>
+    <nav class="main-nav" aria-label="主要導覽"><a href="learn.html#learn">學習方法</a><a href="roots.html">字形圖鑑</a><a href="learn.html#practice">逐字課程</a><a href="practice.html#fluency">打字練習</a><a href="chat.html" aria-current="page">{{nav.chat}} <span class="nav-beta">{{beta}}</span></a></nav>
+  </div></header>
+  <main class="page-width chat-main" id="top">
+    <section class="chat-intro"><div><h1>{{title}} <span class="beta-tag">{{beta}}</span></h1><p>{{intro}}</p></div><a href="practice.html#fluency">{{back.practice}} <span aria-hidden="true">↗</span></a></section>
+    <p class="chat-disclaimer">{{disclaimer}}</p>
+    <div class="game-lobby" id="chat-room">
+      <aside class="lobby-settings">
+        <h2>{{games.title}}</h2><div id="game-list" class="game-list" role="group" aria-label="{{games.title}}"></div>
+        <section class="tone-settings"><h2>{{tone.title}}</h2><div id="tone-list" class="tone-list" role="group" aria-label="{{tone.title}}"></div><p>{{tone.note}}</p></section>
+      </aside>
+      <section class="lobby-room" aria-labelledby="room-title">
+        <header class="room-header"><div class="room-game-mark" id="game-mark" aria-hidden="true"></div><div><h2 id="room-title">{{room.title}}</h2><p id="room-subtitle">{{room.people}}</p></div><button type="button" id="reset-room">{{room.reset}}</button></header>
+        <div class="room-context"><div><span class="room-channel">{{room.title}}</span><span id="connection-status" role="status">{{status.checking}}</span></div><span class="free-tag">{{status.free}}</span></div>
+        <div class="scenario-bar"><span>{{scenario.title}}</span><div id="scenario-list" role="group" aria-label="{{scenario.title}}"></div></div>
+        <div class="room-body"><div id="chat-log" class="chat-log" role="log" aria-live="polite" aria-relevant="additions" aria-label="{{log.label}}" tabindex="0"></div>
+          <aside class="room-side"><h3>{{room.member}}</h3><div class="member"><span class="player-avatar player-you" aria-hidden="true">你</span><div><strong>{{you}}</strong><span>{{room.self}}</span></div></div><div class="member"><span class="player-avatar player-ai" id="teammate-avatar" aria-hidden="true">河</span><div><strong id="teammate-name"></strong><span>{{room.bot}} <b class="ai-tag">{{ai}}</b></span></div></div>
+            <div class="chat-score"><div><strong id="typed-total">0</strong><span>{{chat.characters}}</span></div><div><strong id="typing-speed">—</strong><span>{{chat.speed}}</span></div><div><strong id="round-total">0</strong><span>{{chat.rounds}}</span></div></div>
+          </aside>
+        </div>
+        <div class="chat-notice" id="chat-notice" role="status" hidden><p id="chat-error"></p><div><button type="button" id="retry-chat">{{error.retry}}</button><button type="button" id="local-chat">{{error.local}}</button></div></div>
+        <div class="suggestion"><span>{{suggestion.title}}</span><p id="suggested-reply"></p></div>
+        <section class="chat-hints" aria-labelledby="hint-title"><div class="hint-heading"><h3 id="hint-title">{{hint.title}}</h3><button type="button" id="close-hint" hidden>{{hint.close}}</button></div><p id="hint-empty">{{hint.empty}}</p><div id="hint-body" hidden><strong id="hint-character"></strong><div id="hint-roots"></div><button type="button" id="next-hint">{{hint.first}}</button><a href="roots.html">{{hint.rootlink}} ↗</a></div></section>
+        <form id="chat-form" class="chat-composer"><label for="chat-input">{{chat.label}}</label><div class="composer-box"><textarea id="chat-input" rows="2" autocomplete="off" spellcheck="false" placeholder="{{chat.placeholder}}" aria-describedby="composer-help"></textarea><button type="submit" id="send-chat"><span>{{chat.send}}</span><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></button></div><div id="composer-help"><span>{{chat.keys}}</span><span id="input-count">0 / 180</span></div><div id="typing-status" role="status" hidden><span class="typing-pulse" aria-hidden="true"></span>{{chat.sending}}<button type="button" id="stop-chat">{{error.stop}}</button></div></form>
+      </section>
+    </div>
+    <div class="chat-footnotes"><p>{{free.note}}</p><p id="local-note" hidden>{{local.note}}</p><p>{{privacy}}</p><p>{{chat.stats.note}}</p><div><span id="chat-storage" role="status">{{storage.saved}}</span><button type="button" id="clear-chat">{{clear.title}}</button></div></div>
+    <noscript><p>{{nojs}}</p></noscript>
+  </main>
+  <footer class="site-footer"><div class="page-width footer-inner"><span>慢拆</span><span>{{footer}}</span><a href="#top">返頂部 ↑</a></div></footer>
+</body></html>

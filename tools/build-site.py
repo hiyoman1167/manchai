@@ -7,9 +7,10 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
 FILES = (
-    "index.html", "learn.html", "roots.html", "practice.html", "404.html", "robots.txt", "sitemap.xml",
+    "index.html", "learn.html", "roots.html", "practice.html", "chat.html", "404.html", "robots.txt", "sitemap.xml",
     "styles.css", "favicon.svg", "shared.js", "script.js", "roots.js", "typing-core.js", "extended.js", "glyph-diagrams.js",
     "data/lesson-data.js", "data/root-guide-data.js", "data/code-data.js", "data/reading-data.js", "data/diagram-data.js", "data/practice-copy.js", "data/progress-copy.js",
+    "chat.css", "chat.js", "data/chat-data.js",
 )
 
 if DIST.exists():

@@ -19,7 +19,7 @@
 
 **慢拆（Manchai）** 係為速成新手而設嘅繁體中文學習網站。由認字根、取首尾碼到選字，逐步教你用速成打出日常句子。答案需要時先揭開，唔使靠估或者死記隨機字。
 
-無廣告、免帳戶、唔使後端。日式留白配搭紅色首碼、綠色尾碼，進度自動儲存喺瀏覽器。
+無廣告、免帳戶。日式留白配搭紅色首碼、綠色尾碼，進度自動儲存喺瀏覽器。學習內容用靜態頁面提供；遊戲聊天 Beta 用 Cloudflare Worker 接駁 AI 隊友。
 
 ![實際網站：彩色首尾拆碼、分步新手提示與自動帶練開關](docs/assets/practice.jpg)
 
@@ -33,6 +33,7 @@
 | **逐字拆碼** | 25 組課程、1,011 個字，由入門拆碼到生活主題。 |
 | **真正打字** | 120 句生活情境、30 篇完整段落，使用電腦本身嘅速成輸入法。 |
 | **延伸練習** | 410,945 個可搜尋詞語及短語，亦可切換逐字拆碼模式。 |
+| **遊戲聊天 · Beta** | 8 款遊戲、24 個開場情境，同 1 位 AI 隊友練廣東話；友善、互串、粗口由你自選。 |
 
 - **四步提示** — 睇首碼 → 睇尾碼 → 搵鍵位 → 練選字；示範選字唔會當成真正打字完成。
 - **彩色筆畫** — 1,146 個字有本機 SVG 圖解；未可靠對應嘅部件會保留原色並說明。
@@ -63,6 +64,7 @@ npm run dev
 | 指令 | 用途 |
 | :--- | :--- |
 | `npm run dev` | 啟動本機網站。 |
+| `npm run dev:chat` | 啟動 Worker 聊天預覽，預設關閉 AI，使用情境練習。 |
 | `npm test` | 檢查資料、輸入法組字、拆碼選字，以及儲存／恢復進度。 |
 | `npm run build` | 重建資料，將公開網站檔案輸出到 `dist/`。 |
 | `npm run deploy` | 建置並透過 Wrangler 發佈到 Cloudflare。 |
@@ -70,6 +72,8 @@ npm run dev
 ## 工程設計
 
 **HTML + CSS + Vanilla JavaScript**，使用 Cloudflare Workers Static Assets 提供網頁。Python 負責資料生成，Node.js 負責測試，正式網站唔需要資料庫。
+
+遊戲聊天經 `/api/chat` 呼叫 Workers AI Qwen3，API key 唔會出現在前端。使用 Workers **Free** 免費額度，耗盡就暫停，唔會轉付費模型。需保持 Free 方案；唔係無限訊息。Beta 只供娛樂及打字練習。[聊天架構與免費限制](docs/chat.md)。
 
 ```mermaid
 flowchart LR
@@ -86,6 +90,7 @@ flowchart LR
 | `index.html` / `learn.html` / `roots.html` / `practice.html` | 學習路線、課程、字形圖鑑、打字練習。 |
 | `shared.js` / `script.js` / `extended.js` | 共用字根與儲存、課程流程、閱讀與詞語練習。 |
 | `typing-core.js` / `glyph-diagrams.js` | 中文輸入核對、共用彩色拆碼圖解。 |
+| `templates/chat.html` / `chat.js` / `chat.css` / `worker/` | 遊戲聊天 UI、速成提示、儲存及受限 AI API。 |
 | `data/` / `tools/` | 可編輯來源資料、生成工具及已生成資料。 |
 | `assets/` / `licenses/` | 本機字形素材、上游授權與作者聲明。 |
 | `tests/` / `.github/workflows/` | 功能檢查及自動部署。 |

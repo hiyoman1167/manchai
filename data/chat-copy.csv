@@ -1,0 +1,81 @@
+key,zh-HK
+page.title,遊戲聊天練習室（Beta）｜慢拆
+page.description,用速成輸入法同 AI 隊友練廣東話聊天：選擇 LoL、Apex、VALORANT 等遊戲情境，自選友善、互串或粗口語氣，卡住可以點字睇首尾碼。Beta 功能只供娛樂及打字練習。
+nav.chat,遊戲聊天
+beta,Beta
+title,打字，打返場。
+intro,同 AI 隊友吹水、報位、互串。唔使趕住贏，先練到講得出。
+disclaimer,Beta · 只供娛樂同速成打字練習。對面係 AI 模擬隊友，唔係真人，亦唔係遊戲官方聊天室。
+games.title,揀個遊戲
+tone.title,隊友語氣
+tone.note,粗口由你自選；互串只限遊戲表現，唔針對真實身份。
+scenario.title,開場情境
+scenario.note,轉情境會開新一局，取代今次對話。
+room.title,隊伍頻道
+room.people,你 + 1 位 AI 隊友
+room.reset,開新一局
+room.reset.confirm,再按一次，開始新一局
+room.member,隊伍成員
+you,你
+ai,AI
+room.self,速成練習中
+room.bot,模擬隊友
+room.system,已進入練習室。切換到速成輸入法，打句說話先。
+chat.label,隊伍訊息
+chat.placeholder,打句廣東話，同隊友接住傾…
+chat.send,傳送
+chat.sending,隊友諗緊點回…
+chat.keys,Enter 傳送 · Shift + Enter 換行
+chat.count,{count} / 180
+chat.empty,先打句說話，再傳送。
+chat.long,訊息最多 180 個字，短啲更似遊戲聊天。
+chat.characters,已打中文字
+chat.speed,字／分鐘
+chat.rounds,來回
+chat.stats.note,速度按輸入活動估算，唔計等 AI 嘅時間；貼上文字唔計打字成績。
+suggestion.title,唔知講咩？試住打
+suggestion.note,呢句只係練習建議。可以自由回覆，唔使照抄。
+hint.title,卡住？點字拆碼
+hint.empty,點隊友訊息或建議回覆嘅中文字，逐步睇字根；← → 可以移去隔籬個字。
+hint.first,睇首碼
+hint.last,睇尾碼
+hint.code,睇鍵盤碼
+hint.unknown,暫時冇可靠字碼，可以去字形圖鑑睇字根。
+hint.one,呢個字只有一碼。
+hint.rootlink,打開字形圖鑑
+hint.close,收起提示
+hint.aria,查看「{char}」嘅速成提示
+hint.firstlabel,首碼
+hint.lastlabel,尾碼
+status.checking,檢查 AI 連線…
+status.ai,AI 隊友 · Qwen3
+status.local,本機情境練習
+status.offline,AI 暫時未連線
+status.free,免費練習
+free.note,用戶免費使用。AI 免費額度由全站共用，用晒就暫停；唔會轉去付費模型。
+local.note,情境練習使用預設回覆，唔係 LLM。AI 未連線或者免費額度用晒，仍然可以練打字。
+privacy,最近 30 則訊息同草稿會保留喺呢個瀏覽器；轉遊戲或情境會取代今局。用 AI 時，最近幾句會傳到 Cloudflare。唔好輸入個人資料。
+storage.saved,今次對話已存喺本機
+storage.failed,瀏覽器未能儲存；關閉頁面後可能遺失對話。
+error.rate,你打得太快喇。等一分鐘，再按「重試回覆」。
+error.quota,今日免費 AI 額度暫時用唔到。可以切換情境練習，唔會產生付費回覆。
+error.network,AI 暫時連唔到。你嘅訊息已保留，可以重試。
+error.disabled,AI 未啟用。可以先用情境練習。
+error.invalid,訊息未能傳送，請縮短內容再試。
+error.retry,重試回覆
+error.local,繼續情境練習
+error.stop,停止等候
+error.stopped,已停止等候。你嘅訊息已保留。
+local.replylabel,情境回覆
+room.openinglabel,情境開場
+room.resumelabel,已接返上次對話
+room.changed,已開新一局。
+room.modechange,已轉隊友語氣；之後嘅回覆會跟新設定。
+log.label,聊天訊息紀錄
+footer,打字練習，唔使排位壓力。
+back.practice,返句子練習
+nojs,呢個練習室需要 JavaScript。你仍然可以閱讀學習方法同字形圖鑑。
+clear.title,刪除本機紀錄
+clear.confirm,再按一次，刪除本機紀錄
+clear.done,已刪除本機對話同聊天成績。
+session.limit,今局已傾咗好多句，開新一局再練啦。

@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "python3 -m http.server 4173 --bind 127.0.0.1",
-    "build": "python3 tools/build-reading.py && python3 tools/build-runtime-data.py && python3 tools/build-root-guide.py && python3 tools/build-glyph-diagrams.py && python3 tools/build-practice-copy.py && python3 tools/build-site.py",
-    "test": "python3 tools/build-reading.py && python3 tools/build-runtime-data.py && python3 tools/build-root-guide.py && python3 tools/build-glyph-diagrams.py && python3 tools/build-practice-copy.py && node tests/site.cjs",
-    "deploy": "npm run build && wrangler deploy"
+    "build": "python3 tools/build-reading.py && python3 tools/build-runtime-data.py && python3 tools/build-root-guide.py && python3 tools/build-glyph-diagrams.py && python3 tools/build-practice-copy.py && python3 tools/build-chat.py && python3 tools/build-site.py",
+    "test": "python3 tools/build-reading.py && python3 tools/build-runtime-data.py && python3 tools/build-root-guide.py && python3 tools/build-glyph-diagrams.py && python3 tools/build-practice-copy.py && python3 tools/build-chat.py && node tests/site.cjs && node --test tests/chat-worker.test.mjs && node tests/chat-client.cjs",
+    "deploy": "npm run build && wrangler deploy",
+    "dev:chat": "wrangler dev --ip 127.0.0.1 --port 4173 --var CHAT_AI_ENABLED:false"
   },
   "devDependencies": {
     "wrangler": "^4.147.0"
