@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://learn.manchai.workers.dev/sitemap.xml
+Sitemap: https://learn.manchai.workers.dev/sitemap.txt

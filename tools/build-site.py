@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import shutil
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
 DIST = ROOT / "dist"
@@ -23,4 +24,6 @@ for source in sorted((ROOT / "data").glob("vocab-part-*.js")):
     shutil.copy2(source, DIST / "data" / source.name)
 shutil.copytree(ROOT / "assets/root-shapes", DIST / "assets/root-shapes")
 shutil.copytree(ROOT / "licenses", DIST / "licenses")
+urls = ET.parse(ROOT / "sitemap.xml").findall("{http://www.sitemaps.org/schemas/sitemap/0.9}url/{http://www.sitemaps.org/schemas/sitemap/0.9}loc")
+(DIST / "sitemap.txt").write_text("\n".join(url.text for url in urls) + "\n", encoding="utf-8")
 print(f"Built {DIST} with {len(list(DIST.rglob('*')))} public files and directories.")

@@ -37,7 +37,7 @@ Cloudflare 官方說明：純靜態資產請求免費且不限量；如果日後
 
 ## Google Search Console
 
-用網址前置字元資源 `https://learn.manchai.workers.dev/` 管理本站。`index.html` 內嘅 Google 驗證標記要保留；`robots.txt` 會指向 `sitemap.xml`。Sitemap 收錄首頁、學習、字根圖鑑同練習四個正式網址；各頁 canonical 亦指向相同網址。修改網站網址時，記得一併更新呢幾處。
+用網址前置字元資源 `https://learn.manchai.workers.dev/` 管理本站。`index.html` 內嘅 Google 驗證標記要保留；`robots.txt` 會指向 `sitemap.xml` 同純文字備用入口 `sitemap.txt`。建置時會由 XML 自動產生 `dist/sitemap.txt`，兩份收錄相同嘅首頁、學習、字根圖鑑同練習四個正式網址；各頁 canonical 亦指向相同網址。修改網站網址時，記得一併更新呢幾處。提交成功唔等於擷取或收錄成功，需以 Search Console 詳細狀態為準。
 
 ## 內容來源
 
